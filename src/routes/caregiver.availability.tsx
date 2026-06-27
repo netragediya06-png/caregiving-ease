@@ -37,8 +37,8 @@ function Availability() {
               <div></div>
               {days.map((d) => <div key={d} className="text-center text-xs font-medium text-muted-foreground">{d}</div>)}
               {slots.map((t) => (
-                <>
-                  <div key={t} className="text-right text-xs text-muted-foreground">{t}</div>
+                <Fragment key={t}>
+                  <div className="text-right text-xs text-muted-foreground">{t}</div>
                   {days.map((d) => {
                     const on = (t >= "9:00" && t <= "17:00") && d !== "Sun";
                     return (
@@ -47,7 +47,7 @@ function Availability() {
                       </button>
                     );
                   })}
-                </>
+                </Fragment>
               ))}
             </div>
           </div>
