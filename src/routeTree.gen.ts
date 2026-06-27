@@ -20,6 +20,7 @@ import { Route as DashboardPatientsRouteImport } from './routes/dashboard.patien
 import { Route as AuthRegisterRouteImport } from './routes/auth.register'
 import { Route as AuthLoginRouteImport } from './routes/auth.login'
 import { Route as AuthForgotPasswordRouteImport } from './routes/auth.forgot-password'
+import { Route as DashboardCaregiversIndexRouteImport } from './routes/dashboard.caregivers.index'
 import { Route as AuthRegisterFamilyRouteImport } from './routes/auth.register.family'
 import { Route as AuthRegisterCaregiverRouteImport } from './routes/auth.register.caregiver'
 
@@ -78,6 +79,12 @@ const AuthForgotPasswordRoute = AuthForgotPasswordRouteImport.update({
   path: '/auth/forgot-password',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardCaregiversIndexRoute =
+  DashboardCaregiversIndexRouteImport.update({
+    id: '/caregivers/',
+    path: '/caregivers/',
+    getParentRoute: () => DashboardRoute,
+  } as any)
 const AuthRegisterFamilyRoute = AuthRegisterFamilyRouteImport.update({
   id: '/family',
   path: '/family',
@@ -103,6 +110,7 @@ export interface FileRoutesByFullPath {
   '/dashboard/': typeof DashboardIndexRoute
   '/auth/register/caregiver': typeof AuthRegisterCaregiverRoute
   '/auth/register/family': typeof AuthRegisterFamilyRoute
+  '/dashboard/caregivers/': typeof DashboardCaregiversIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -117,6 +125,7 @@ export interface FileRoutesByTo {
   '/dashboard': typeof DashboardIndexRoute
   '/auth/register/caregiver': typeof AuthRegisterCaregiverRoute
   '/auth/register/family': typeof AuthRegisterFamilyRoute
+  '/dashboard/caregivers': typeof DashboardCaregiversIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -133,6 +142,7 @@ export interface FileRoutesById {
   '/dashboard/': typeof DashboardIndexRoute
   '/auth/register/caregiver': typeof AuthRegisterCaregiverRoute
   '/auth/register/family': typeof AuthRegisterFamilyRoute
+  '/dashboard/caregivers/': typeof DashboardCaregiversIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -150,6 +160,7 @@ export interface FileRouteTypes {
     | '/dashboard/'
     | '/auth/register/caregiver'
     | '/auth/register/family'
+    | '/dashboard/caregivers/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -164,6 +175,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/auth/register/caregiver'
     | '/auth/register/family'
+    | '/dashboard/caregivers'
   id:
     | '__root__'
     | '/'
@@ -179,6 +191,7 @@ export interface FileRouteTypes {
     | '/dashboard/'
     | '/auth/register/caregiver'
     | '/auth/register/family'
+    | '/dashboard/caregivers/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -270,6 +283,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthForgotPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/caregivers/': {
+      id: '/dashboard/caregivers/'
+      path: '/caregivers'
+      fullPath: '/dashboard/caregivers/'
+      preLoaderRoute: typeof DashboardCaregiversIndexRouteImport
+      parentRoute: typeof DashboardRoute
+    }
     '/auth/register/family': {
       id: '/auth/register/family'
       path: '/family'
@@ -292,6 +312,7 @@ interface DashboardRouteChildren {
   DashboardProfileRoute: typeof DashboardProfileRoute
   DashboardServicesRoute: typeof DashboardServicesRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
+  DashboardCaregiversIndexRoute: typeof DashboardCaregiversIndexRoute
 }
 
 const DashboardRouteChildren: DashboardRouteChildren = {
@@ -299,6 +320,7 @@ const DashboardRouteChildren: DashboardRouteChildren = {
   DashboardProfileRoute: DashboardProfileRoute,
   DashboardServicesRoute: DashboardServicesRoute,
   DashboardIndexRoute: DashboardIndexRoute,
+  DashboardCaregiversIndexRoute: DashboardCaregiversIndexRoute,
 }
 
 const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
