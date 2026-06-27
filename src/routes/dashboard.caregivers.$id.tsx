@@ -56,7 +56,7 @@ function Detail() {
             </TabsList>
             <TabsContent value="about" className="space-y-6 p-5">
               <Section title="Specialties">
-                <div className="flex flex-wrap gap-1.5">{c.specialties.map((s) => <Badge key={s} variant="secondary" className="rounded-full bg-muted">{s}</Badge>)}</div>
+                <div className="flex flex-wrap gap-1.5">{c.specialties.map((s: string) => <Badge key={s} variant="secondary" className="rounded-full bg-muted">{s}</Badge>)}</div>
               </Section>
               <Section title="Qualifications" icon={GraduationCap}>
                 <ul className="space-y-2 text-sm text-muted-foreground">
