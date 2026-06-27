@@ -31,6 +31,7 @@ import { Route as AuthRegisterRouteImport } from './routes/auth.register'
 import { Route as AuthLoginRouteImport } from './routes/auth.login'
 import { Route as AuthForgotPasswordRouteImport } from './routes/auth.forgot-password'
 import { Route as AdminUsersRouteImport } from './routes/admin.users'
+import { Route as AdminServicesRouteImport } from './routes/admin.services'
 import { Route as AdminCaregiversRouteImport } from './routes/admin.caregivers'
 import { Route as DashboardCaregiversIndexRouteImport } from './routes/dashboard.caregivers.index'
 import { Route as DashboardCaregiversIdRouteImport } from './routes/dashboard.caregivers.$id'
@@ -147,6 +148,11 @@ const AdminUsersRoute = AdminUsersRouteImport.update({
   path: '/users',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminServicesRoute = AdminServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminCaregiversRoute = AdminCaregiversRouteImport.update({
   id: '/caregivers',
   path: '/caregivers',
@@ -180,6 +186,7 @@ export interface FileRoutesByFullPath {
   '/caregiver': typeof CaregiverRouteWithChildren
   '/dashboard': typeof DashboardRouteWithChildren
   '/admin/caregivers': typeof AdminCaregiversRoute
+  '/admin/services': typeof AdminServicesRoute
   '/admin/users': typeof AdminUsersRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/login': typeof AuthLoginRoute
@@ -206,6 +213,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin/caregivers': typeof AdminCaregiversRoute
+  '/admin/services': typeof AdminServicesRoute
   '/admin/users': typeof AdminUsersRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/login': typeof AuthLoginRoute
@@ -236,6 +244,7 @@ export interface FileRoutesById {
   '/caregiver': typeof CaregiverRouteWithChildren
   '/dashboard': typeof DashboardRouteWithChildren
   '/admin/caregivers': typeof AdminCaregiversRoute
+  '/admin/services': typeof AdminServicesRoute
   '/admin/users': typeof AdminUsersRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/login': typeof AuthLoginRoute
@@ -267,6 +276,7 @@ export interface FileRouteTypes {
     | '/caregiver'
     | '/dashboard'
     | '/admin/caregivers'
+    | '/admin/services'
     | '/admin/users'
     | '/auth/forgot-password'
     | '/auth/login'
@@ -293,6 +303,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/admin/caregivers'
+    | '/admin/services'
     | '/admin/users'
     | '/auth/forgot-password'
     | '/auth/login'
@@ -322,6 +333,7 @@ export interface FileRouteTypes {
     | '/caregiver'
     | '/dashboard'
     | '/admin/caregivers'
+    | '/admin/services'
     | '/admin/users'
     | '/auth/forgot-password'
     | '/auth/login'
@@ -512,6 +524,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminUsersRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/services': {
+      id: '/admin/services'
+      path: '/services'
+      fullPath: '/admin/services'
+      preLoaderRoute: typeof AdminServicesRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/caregivers': {
       id: '/admin/caregivers'
       path: '/caregivers'
@@ -552,12 +571,14 @@ declare module '@tanstack/react-router' {
 
 interface AdminRouteChildren {
   AdminCaregiversRoute: typeof AdminCaregiversRoute
+  AdminServicesRoute: typeof AdminServicesRoute
   AdminUsersRoute: typeof AdminUsersRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
   AdminCaregiversRoute: AdminCaregiversRoute,
+  AdminServicesRoute: AdminServicesRoute,
   AdminUsersRoute: AdminUsersRoute,
   AdminIndexRoute: AdminIndexRoute,
 }

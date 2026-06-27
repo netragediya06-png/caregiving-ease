@@ -17,13 +17,13 @@ function AdminServices() {
 
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         {services.map((s) => (
-          <div key={s.name} className="surface-card p-6">
+          <div key={s.id} className="surface-card p-6">
             <div className="flex items-start justify-between">
               <div>
-                <h3 className="font-display text-lg font-semibold">{s.name}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{s.description}</p>
+                <h3 className="font-display text-lg font-semibold">{s.title}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{s.desc}</p>
               </div>
-              <Badge variant="secondary" className="rounded-full bg-primary-soft text-primary">{s.priceFrom}</Badge>
+              <Badge variant="secondary" className="rounded-full bg-primary-soft text-primary">from ₹{s.from}</Badge>
             </div>
             <div className="mt-4 flex items-center justify-between border-t border-border pt-4">
               <div className="flex items-center gap-2 text-sm">
