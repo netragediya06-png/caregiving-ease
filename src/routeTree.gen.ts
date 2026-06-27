@@ -17,6 +17,7 @@ import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
 import { Route as DashboardServicesRouteImport } from './routes/dashboard.services'
 import { Route as DashboardProfileRouteImport } from './routes/dashboard.profile'
 import { Route as DashboardPatientsRouteImport } from './routes/dashboard.patients'
+import { Route as DashboardHistoryRouteImport } from './routes/dashboard.history'
 import { Route as DashboardBookingsRouteImport } from './routes/dashboard.bookings'
 import { Route as AuthRegisterRouteImport } from './routes/auth.register'
 import { Route as AuthLoginRouteImport } from './routes/auth.login'
@@ -64,6 +65,11 @@ const DashboardProfileRoute = DashboardProfileRouteImport.update({
 const DashboardPatientsRoute = DashboardPatientsRouteImport.update({
   id: '/patients',
   path: '/patients',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardHistoryRoute = DashboardHistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
   getParentRoute: () => DashboardRoute,
 } as any)
 const DashboardBookingsRoute = DashboardBookingsRouteImport.update({
@@ -117,6 +123,7 @@ export interface FileRoutesByFullPath {
   '/auth/login': typeof AuthLoginRoute
   '/auth/register': typeof AuthRegisterRouteWithChildren
   '/dashboard/bookings': typeof DashboardBookingsRoute
+  '/dashboard/history': typeof DashboardHistoryRoute
   '/dashboard/patients': typeof DashboardPatientsRoute
   '/dashboard/profile': typeof DashboardProfileRoute
   '/dashboard/services': typeof DashboardServicesRoute
@@ -134,6 +141,7 @@ export interface FileRoutesByTo {
   '/auth/login': typeof AuthLoginRoute
   '/auth/register': typeof AuthRegisterRouteWithChildren
   '/dashboard/bookings': typeof DashboardBookingsRoute
+  '/dashboard/history': typeof DashboardHistoryRoute
   '/dashboard/patients': typeof DashboardPatientsRoute
   '/dashboard/profile': typeof DashboardProfileRoute
   '/dashboard/services': typeof DashboardServicesRoute
@@ -153,6 +161,7 @@ export interface FileRoutesById {
   '/auth/login': typeof AuthLoginRoute
   '/auth/register': typeof AuthRegisterRouteWithChildren
   '/dashboard/bookings': typeof DashboardBookingsRoute
+  '/dashboard/history': typeof DashboardHistoryRoute
   '/dashboard/patients': typeof DashboardPatientsRoute
   '/dashboard/profile': typeof DashboardProfileRoute
   '/dashboard/services': typeof DashboardServicesRoute
@@ -173,6 +182,7 @@ export interface FileRouteTypes {
     | '/auth/login'
     | '/auth/register'
     | '/dashboard/bookings'
+    | '/dashboard/history'
     | '/dashboard/patients'
     | '/dashboard/profile'
     | '/dashboard/services'
@@ -190,6 +200,7 @@ export interface FileRouteTypes {
     | '/auth/login'
     | '/auth/register'
     | '/dashboard/bookings'
+    | '/dashboard/history'
     | '/dashboard/patients'
     | '/dashboard/profile'
     | '/dashboard/services'
@@ -208,6 +219,7 @@ export interface FileRouteTypes {
     | '/auth/login'
     | '/auth/register'
     | '/dashboard/bookings'
+    | '/dashboard/history'
     | '/dashboard/patients'
     | '/dashboard/profile'
     | '/dashboard/services'
@@ -286,6 +298,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardPatientsRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/dashboard/history': {
+      id: '/dashboard/history'
+      path: '/history'
+      fullPath: '/dashboard/history'
+      preLoaderRoute: typeof DashboardHistoryRouteImport
+      parentRoute: typeof DashboardRoute
+    }
     '/dashboard/bookings': {
       id: '/dashboard/bookings'
       path: '/bookings'
@@ -347,6 +366,7 @@ declare module '@tanstack/react-router' {
 
 interface DashboardRouteChildren {
   DashboardBookingsRoute: typeof DashboardBookingsRoute
+  DashboardHistoryRoute: typeof DashboardHistoryRoute
   DashboardPatientsRoute: typeof DashboardPatientsRoute
   DashboardProfileRoute: typeof DashboardProfileRoute
   DashboardServicesRoute: typeof DashboardServicesRoute
@@ -357,6 +377,7 @@ interface DashboardRouteChildren {
 
 const DashboardRouteChildren: DashboardRouteChildren = {
   DashboardBookingsRoute: DashboardBookingsRoute,
+  DashboardHistoryRoute: DashboardHistoryRoute,
   DashboardPatientsRoute: DashboardPatientsRoute,
   DashboardProfileRoute: DashboardProfileRoute,
   DashboardServicesRoute: DashboardServicesRoute,
