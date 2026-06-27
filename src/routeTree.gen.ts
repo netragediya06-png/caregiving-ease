@@ -20,6 +20,7 @@ import { Route as DashboardProfileRouteImport } from './routes/dashboard.profile
 import { Route as DashboardPatientsRouteImport } from './routes/dashboard.patients'
 import { Route as DashboardHistoryRouteImport } from './routes/dashboard.history'
 import { Route as DashboardBookingsRouteImport } from './routes/dashboard.bookings'
+import { Route as CaregiverProfileRouteImport } from './routes/caregiver.profile'
 import { Route as AuthRegisterRouteImport } from './routes/auth.register'
 import { Route as AuthLoginRouteImport } from './routes/auth.login'
 import { Route as AuthForgotPasswordRouteImport } from './routes/auth.forgot-password'
@@ -83,6 +84,11 @@ const DashboardBookingsRoute = DashboardBookingsRouteImport.update({
   path: '/bookings',
   getParentRoute: () => DashboardRoute,
 } as any)
+const CaregiverProfileRoute = CaregiverProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => CaregiverRoute,
+} as any)
 const AuthRegisterRoute = AuthRegisterRouteImport.update({
   id: '/auth/register',
   path: '/auth/register',
@@ -128,6 +134,7 @@ export interface FileRoutesByFullPath {
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/register': typeof AuthRegisterRouteWithChildren
+  '/caregiver/profile': typeof CaregiverProfileRoute
   '/dashboard/bookings': typeof DashboardBookingsRoute
   '/dashboard/history': typeof DashboardHistoryRoute
   '/dashboard/patients': typeof DashboardPatientsRoute
@@ -146,6 +153,7 @@ export interface FileRoutesByTo {
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/register': typeof AuthRegisterRouteWithChildren
+  '/caregiver/profile': typeof CaregiverProfileRoute
   '/dashboard/bookings': typeof DashboardBookingsRoute
   '/dashboard/history': typeof DashboardHistoryRoute
   '/dashboard/patients': typeof DashboardPatientsRoute
@@ -167,6 +175,7 @@ export interface FileRoutesById {
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/register': typeof AuthRegisterRouteWithChildren
+  '/caregiver/profile': typeof CaregiverProfileRoute
   '/dashboard/bookings': typeof DashboardBookingsRoute
   '/dashboard/history': typeof DashboardHistoryRoute
   '/dashboard/patients': typeof DashboardPatientsRoute
@@ -189,6 +198,7 @@ export interface FileRouteTypes {
     | '/auth/forgot-password'
     | '/auth/login'
     | '/auth/register'
+    | '/caregiver/profile'
     | '/dashboard/bookings'
     | '/dashboard/history'
     | '/dashboard/patients'
@@ -207,6 +217,7 @@ export interface FileRouteTypes {
     | '/auth/forgot-password'
     | '/auth/login'
     | '/auth/register'
+    | '/caregiver/profile'
     | '/dashboard/bookings'
     | '/dashboard/history'
     | '/dashboard/patients'
@@ -227,6 +238,7 @@ export interface FileRouteTypes {
     | '/auth/forgot-password'
     | '/auth/login'
     | '/auth/register'
+    | '/caregiver/profile'
     | '/dashboard/bookings'
     | '/dashboard/history'
     | '/dashboard/patients'
@@ -329,6 +341,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardBookingsRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/caregiver/profile': {
+      id: '/caregiver/profile'
+      path: '/profile'
+      fullPath: '/caregiver/profile'
+      preLoaderRoute: typeof CaregiverProfileRouteImport
+      parentRoute: typeof CaregiverRoute
+    }
     '/auth/register': {
       id: '/auth/register'
       path: '/auth/register'
@@ -382,10 +401,12 @@ declare module '@tanstack/react-router' {
 }
 
 interface CaregiverRouteChildren {
+  CaregiverProfileRoute: typeof CaregiverProfileRoute
   CaregiverIndexRoute: typeof CaregiverIndexRoute
 }
 
 const CaregiverRouteChildren: CaregiverRouteChildren = {
+  CaregiverProfileRoute: CaregiverProfileRoute,
   CaregiverIndexRoute: CaregiverIndexRoute,
 }
 
