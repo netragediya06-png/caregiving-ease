@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as CaregiverRouteImport } from './routes/caregiver'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthRegisterRouteImport } from './routes/auth.register'
 import { Route as AuthLoginRouteImport } from './routes/auth.login'
@@ -26,6 +27,11 @@ const DashboardRoute = DashboardRouteImport.update({
 const CaregiverRoute = CaregiverRouteImport.update({
   id: '/caregiver',
   path: '/caregiver',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -61,6 +67,7 @@ const AuthRegisterCaregiverRoute = AuthRegisterCaregiverRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/caregiver': typeof CaregiverRoute
   '/dashboard': typeof DashboardRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
@@ -71,6 +78,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/caregiver': typeof CaregiverRoute
   '/dashboard': typeof DashboardRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
@@ -82,6 +90,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/caregiver': typeof CaregiverRoute
   '/dashboard': typeof DashboardRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
@@ -94,6 +103,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/admin'
     | '/caregiver'
     | '/dashboard'
     | '/auth/forgot-password'
@@ -104,6 +114,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/admin'
     | '/caregiver'
     | '/dashboard'
     | '/auth/forgot-password'
@@ -114,6 +125,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/admin'
     | '/caregiver'
     | '/dashboard'
     | '/auth/forgot-password'
@@ -125,6 +137,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
   CaregiverRoute: typeof CaregiverRoute
   DashboardRoute: typeof DashboardRoute
   AuthForgotPasswordRoute: typeof AuthForgotPasswordRoute
@@ -146,6 +159,13 @@ declare module '@tanstack/react-router' {
       path: '/caregiver'
       fullPath: '/caregiver'
       preLoaderRoute: typeof CaregiverRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -209,6 +229,7 @@ const AuthRegisterRouteWithChildren = AuthRegisterRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
   CaregiverRoute: CaregiverRoute,
   DashboardRoute: DashboardRoute,
   AuthForgotPasswordRoute: AuthForgotPasswordRoute,
