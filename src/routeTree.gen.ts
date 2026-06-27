@@ -21,6 +21,7 @@ import { Route as DashboardPatientsRouteImport } from './routes/dashboard.patien
 import { Route as DashboardHistoryRouteImport } from './routes/dashboard.history'
 import { Route as DashboardBookingsRouteImport } from './routes/dashboard.bookings'
 import { Route as CaregiverProfileRouteImport } from './routes/caregiver.profile'
+import { Route as CaregiverDocumentsRouteImport } from './routes/caregiver.documents'
 import { Route as AuthRegisterRouteImport } from './routes/auth.register'
 import { Route as AuthLoginRouteImport } from './routes/auth.login'
 import { Route as AuthForgotPasswordRouteImport } from './routes/auth.forgot-password'
@@ -89,6 +90,11 @@ const CaregiverProfileRoute = CaregiverProfileRouteImport.update({
   path: '/profile',
   getParentRoute: () => CaregiverRoute,
 } as any)
+const CaregiverDocumentsRoute = CaregiverDocumentsRouteImport.update({
+  id: '/documents',
+  path: '/documents',
+  getParentRoute: () => CaregiverRoute,
+} as any)
 const AuthRegisterRoute = AuthRegisterRouteImport.update({
   id: '/auth/register',
   path: '/auth/register',
@@ -134,6 +140,7 @@ export interface FileRoutesByFullPath {
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/register': typeof AuthRegisterRouteWithChildren
+  '/caregiver/documents': typeof CaregiverDocumentsRoute
   '/caregiver/profile': typeof CaregiverProfileRoute
   '/dashboard/bookings': typeof DashboardBookingsRoute
   '/dashboard/history': typeof DashboardHistoryRoute
@@ -153,6 +160,7 @@ export interface FileRoutesByTo {
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/register': typeof AuthRegisterRouteWithChildren
+  '/caregiver/documents': typeof CaregiverDocumentsRoute
   '/caregiver/profile': typeof CaregiverProfileRoute
   '/dashboard/bookings': typeof DashboardBookingsRoute
   '/dashboard/history': typeof DashboardHistoryRoute
@@ -175,6 +183,7 @@ export interface FileRoutesById {
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/register': typeof AuthRegisterRouteWithChildren
+  '/caregiver/documents': typeof CaregiverDocumentsRoute
   '/caregiver/profile': typeof CaregiverProfileRoute
   '/dashboard/bookings': typeof DashboardBookingsRoute
   '/dashboard/history': typeof DashboardHistoryRoute
@@ -198,6 +207,7 @@ export interface FileRouteTypes {
     | '/auth/forgot-password'
     | '/auth/login'
     | '/auth/register'
+    | '/caregiver/documents'
     | '/caregiver/profile'
     | '/dashboard/bookings'
     | '/dashboard/history'
@@ -217,6 +227,7 @@ export interface FileRouteTypes {
     | '/auth/forgot-password'
     | '/auth/login'
     | '/auth/register'
+    | '/caregiver/documents'
     | '/caregiver/profile'
     | '/dashboard/bookings'
     | '/dashboard/history'
@@ -238,6 +249,7 @@ export interface FileRouteTypes {
     | '/auth/forgot-password'
     | '/auth/login'
     | '/auth/register'
+    | '/caregiver/documents'
     | '/caregiver/profile'
     | '/dashboard/bookings'
     | '/dashboard/history'
@@ -348,6 +360,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CaregiverProfileRouteImport
       parentRoute: typeof CaregiverRoute
     }
+    '/caregiver/documents': {
+      id: '/caregiver/documents'
+      path: '/documents'
+      fullPath: '/caregiver/documents'
+      preLoaderRoute: typeof CaregiverDocumentsRouteImport
+      parentRoute: typeof CaregiverRoute
+    }
     '/auth/register': {
       id: '/auth/register'
       path: '/auth/register'
@@ -401,11 +420,13 @@ declare module '@tanstack/react-router' {
 }
 
 interface CaregiverRouteChildren {
+  CaregiverDocumentsRoute: typeof CaregiverDocumentsRoute
   CaregiverProfileRoute: typeof CaregiverProfileRoute
   CaregiverIndexRoute: typeof CaregiverIndexRoute
 }
 
 const CaregiverRouteChildren: CaregiverRouteChildren = {
+  CaregiverDocumentsRoute: CaregiverDocumentsRoute,
   CaregiverProfileRoute: CaregiverProfileRoute,
   CaregiverIndexRoute: CaregiverIndexRoute,
 }
