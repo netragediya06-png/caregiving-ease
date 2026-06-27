@@ -14,6 +14,7 @@ import { Route as CaregiverRouteImport } from './routes/caregiver'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
+import { Route as DashboardServicesRouteImport } from './routes/dashboard.services'
 import { Route as DashboardProfileRouteImport } from './routes/dashboard.profile'
 import { Route as DashboardPatientsRouteImport } from './routes/dashboard.patients'
 import { Route as AuthRegisterRouteImport } from './routes/auth.register'
@@ -45,6 +46,11 @@ const IndexRoute = IndexRouteImport.update({
 const DashboardIndexRoute = DashboardIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => DashboardRoute,
+} as any)
+const DashboardServicesRoute = DashboardServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
   getParentRoute: () => DashboardRoute,
 } as any)
 const DashboardProfileRoute = DashboardProfileRouteImport.update({
@@ -93,6 +99,7 @@ export interface FileRoutesByFullPath {
   '/auth/register': typeof AuthRegisterRouteWithChildren
   '/dashboard/patients': typeof DashboardPatientsRoute
   '/dashboard/profile': typeof DashboardProfileRoute
+  '/dashboard/services': typeof DashboardServicesRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/auth/register/caregiver': typeof AuthRegisterCaregiverRoute
   '/auth/register/family': typeof AuthRegisterFamilyRoute
@@ -106,6 +113,7 @@ export interface FileRoutesByTo {
   '/auth/register': typeof AuthRegisterRouteWithChildren
   '/dashboard/patients': typeof DashboardPatientsRoute
   '/dashboard/profile': typeof DashboardProfileRoute
+  '/dashboard/services': typeof DashboardServicesRoute
   '/dashboard': typeof DashboardIndexRoute
   '/auth/register/caregiver': typeof AuthRegisterCaregiverRoute
   '/auth/register/family': typeof AuthRegisterFamilyRoute
@@ -121,6 +129,7 @@ export interface FileRoutesById {
   '/auth/register': typeof AuthRegisterRouteWithChildren
   '/dashboard/patients': typeof DashboardPatientsRoute
   '/dashboard/profile': typeof DashboardProfileRoute
+  '/dashboard/services': typeof DashboardServicesRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/auth/register/caregiver': typeof AuthRegisterCaregiverRoute
   '/auth/register/family': typeof AuthRegisterFamilyRoute
@@ -137,6 +146,7 @@ export interface FileRouteTypes {
     | '/auth/register'
     | '/dashboard/patients'
     | '/dashboard/profile'
+    | '/dashboard/services'
     | '/dashboard/'
     | '/auth/register/caregiver'
     | '/auth/register/family'
@@ -150,6 +160,7 @@ export interface FileRouteTypes {
     | '/auth/register'
     | '/dashboard/patients'
     | '/dashboard/profile'
+    | '/dashboard/services'
     | '/dashboard'
     | '/auth/register/caregiver'
     | '/auth/register/family'
@@ -164,6 +175,7 @@ export interface FileRouteTypes {
     | '/auth/register'
     | '/dashboard/patients'
     | '/dashboard/profile'
+    | '/dashboard/services'
     | '/dashboard/'
     | '/auth/register/caregiver'
     | '/auth/register/family'
@@ -214,6 +226,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/dashboard/'
       preLoaderRoute: typeof DashboardIndexRouteImport
+      parentRoute: typeof DashboardRoute
+    }
+    '/dashboard/services': {
+      id: '/dashboard/services'
+      path: '/services'
+      fullPath: '/dashboard/services'
+      preLoaderRoute: typeof DashboardServicesRouteImport
       parentRoute: typeof DashboardRoute
     }
     '/dashboard/profile': {
@@ -271,12 +290,14 @@ declare module '@tanstack/react-router' {
 interface DashboardRouteChildren {
   DashboardPatientsRoute: typeof DashboardPatientsRoute
   DashboardProfileRoute: typeof DashboardProfileRoute
+  DashboardServicesRoute: typeof DashboardServicesRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
 }
 
 const DashboardRouteChildren: DashboardRouteChildren = {
   DashboardPatientsRoute: DashboardPatientsRoute,
   DashboardProfileRoute: DashboardProfileRoute,
+  DashboardServicesRoute: DashboardServicesRoute,
   DashboardIndexRoute: DashboardIndexRoute,
 }
 
