@@ -23,6 +23,7 @@ import { Route as DashboardBookingsRouteImport } from './routes/dashboard.bookin
 import { Route as CaregiverRequestsRouteImport } from './routes/caregiver.requests'
 import { Route as CaregiverProfileRouteImport } from './routes/caregiver.profile'
 import { Route as CaregiverHistoryRouteImport } from './routes/caregiver.history'
+import { Route as CaregiverEarningsRouteImport } from './routes/caregiver.earnings'
 import { Route as CaregiverDocumentsRouteImport } from './routes/caregiver.documents'
 import { Route as CaregiverAvailabilityRouteImport } from './routes/caregiver.availability'
 import { Route as AuthRegisterRouteImport } from './routes/auth.register'
@@ -103,6 +104,11 @@ const CaregiverHistoryRoute = CaregiverHistoryRouteImport.update({
   path: '/history',
   getParentRoute: () => CaregiverRoute,
 } as any)
+const CaregiverEarningsRoute = CaregiverEarningsRouteImport.update({
+  id: '/earnings',
+  path: '/earnings',
+  getParentRoute: () => CaregiverRoute,
+} as any)
 const CaregiverDocumentsRoute = CaregiverDocumentsRouteImport.update({
   id: '/documents',
   path: '/documents',
@@ -160,6 +166,7 @@ export interface FileRoutesByFullPath {
   '/auth/register': typeof AuthRegisterRouteWithChildren
   '/caregiver/availability': typeof CaregiverAvailabilityRoute
   '/caregiver/documents': typeof CaregiverDocumentsRoute
+  '/caregiver/earnings': typeof CaregiverEarningsRoute
   '/caregiver/history': typeof CaregiverHistoryRoute
   '/caregiver/profile': typeof CaregiverProfileRoute
   '/caregiver/requests': typeof CaregiverRequestsRoute
@@ -183,6 +190,7 @@ export interface FileRoutesByTo {
   '/auth/register': typeof AuthRegisterRouteWithChildren
   '/caregiver/availability': typeof CaregiverAvailabilityRoute
   '/caregiver/documents': typeof CaregiverDocumentsRoute
+  '/caregiver/earnings': typeof CaregiverEarningsRoute
   '/caregiver/history': typeof CaregiverHistoryRoute
   '/caregiver/profile': typeof CaregiverProfileRoute
   '/caregiver/requests': typeof CaregiverRequestsRoute
@@ -209,6 +217,7 @@ export interface FileRoutesById {
   '/auth/register': typeof AuthRegisterRouteWithChildren
   '/caregiver/availability': typeof CaregiverAvailabilityRoute
   '/caregiver/documents': typeof CaregiverDocumentsRoute
+  '/caregiver/earnings': typeof CaregiverEarningsRoute
   '/caregiver/history': typeof CaregiverHistoryRoute
   '/caregiver/profile': typeof CaregiverProfileRoute
   '/caregiver/requests': typeof CaregiverRequestsRoute
@@ -236,6 +245,7 @@ export interface FileRouteTypes {
     | '/auth/register'
     | '/caregiver/availability'
     | '/caregiver/documents'
+    | '/caregiver/earnings'
     | '/caregiver/history'
     | '/caregiver/profile'
     | '/caregiver/requests'
@@ -259,6 +269,7 @@ export interface FileRouteTypes {
     | '/auth/register'
     | '/caregiver/availability'
     | '/caregiver/documents'
+    | '/caregiver/earnings'
     | '/caregiver/history'
     | '/caregiver/profile'
     | '/caregiver/requests'
@@ -284,6 +295,7 @@ export interface FileRouteTypes {
     | '/auth/register'
     | '/caregiver/availability'
     | '/caregiver/documents'
+    | '/caregiver/earnings'
     | '/caregiver/history'
     | '/caregiver/profile'
     | '/caregiver/requests'
@@ -410,6 +422,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CaregiverHistoryRouteImport
       parentRoute: typeof CaregiverRoute
     }
+    '/caregiver/earnings': {
+      id: '/caregiver/earnings'
+      path: '/earnings'
+      fullPath: '/caregiver/earnings'
+      preLoaderRoute: typeof CaregiverEarningsRouteImport
+      parentRoute: typeof CaregiverRoute
+    }
     '/caregiver/documents': {
       id: '/caregiver/documents'
       path: '/documents'
@@ -479,6 +498,7 @@ declare module '@tanstack/react-router' {
 interface CaregiverRouteChildren {
   CaregiverAvailabilityRoute: typeof CaregiverAvailabilityRoute
   CaregiverDocumentsRoute: typeof CaregiverDocumentsRoute
+  CaregiverEarningsRoute: typeof CaregiverEarningsRoute
   CaregiverHistoryRoute: typeof CaregiverHistoryRoute
   CaregiverProfileRoute: typeof CaregiverProfileRoute
   CaregiverRequestsRoute: typeof CaregiverRequestsRoute
@@ -488,6 +508,7 @@ interface CaregiverRouteChildren {
 const CaregiverRouteChildren: CaregiverRouteChildren = {
   CaregiverAvailabilityRoute: CaregiverAvailabilityRoute,
   CaregiverDocumentsRoute: CaregiverDocumentsRoute,
+  CaregiverEarningsRoute: CaregiverEarningsRoute,
   CaregiverHistoryRoute: CaregiverHistoryRoute,
   CaregiverProfileRoute: CaregiverProfileRoute,
   CaregiverRequestsRoute: CaregiverRequestsRoute,
