@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthRegisterRouteImport } from './routes/auth.register'
 import { Route as AuthLoginRouteImport } from './routes/auth.login'
 import { Route as AuthRegisterFamilyRouteImport } from './routes/auth.register.family'
+import { Route as AuthRegisterCaregiverRouteImport } from './routes/auth.register.caregiver'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,17 +35,24 @@ const AuthRegisterFamilyRoute = AuthRegisterFamilyRouteImport.update({
   path: '/family',
   getParentRoute: () => AuthRegisterRoute,
 } as any)
+const AuthRegisterCaregiverRoute = AuthRegisterCaregiverRouteImport.update({
+  id: '/caregiver',
+  path: '/caregiver',
+  getParentRoute: () => AuthRegisterRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/register': typeof AuthRegisterRouteWithChildren
+  '/auth/register/caregiver': typeof AuthRegisterCaregiverRoute
   '/auth/register/family': typeof AuthRegisterFamilyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/register': typeof AuthRegisterRouteWithChildren
+  '/auth/register/caregiver': typeof AuthRegisterCaregiverRoute
   '/auth/register/family': typeof AuthRegisterFamilyRoute
 }
 export interface FileRoutesById {
@@ -52,18 +60,30 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/register': typeof AuthRegisterRouteWithChildren
+  '/auth/register/caregiver': typeof AuthRegisterCaregiverRoute
   '/auth/register/family': typeof AuthRegisterFamilyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth/login' | '/auth/register' | '/auth/register/family'
+  fullPaths:
+    | '/'
+    | '/auth/login'
+    | '/auth/register'
+    | '/auth/register/caregiver'
+    | '/auth/register/family'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth/login' | '/auth/register' | '/auth/register/family'
+  to:
+    | '/'
+    | '/auth/login'
+    | '/auth/register'
+    | '/auth/register/caregiver'
+    | '/auth/register/family'
   id:
     | '__root__'
     | '/'
     | '/auth/login'
     | '/auth/register'
+    | '/auth/register/caregiver'
     | '/auth/register/family'
   fileRoutesById: FileRoutesById
 }
@@ -103,14 +123,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRegisterFamilyRouteImport
       parentRoute: typeof AuthRegisterRoute
     }
+    '/auth/register/caregiver': {
+      id: '/auth/register/caregiver'
+      path: '/caregiver'
+      fullPath: '/auth/register/caregiver'
+      preLoaderRoute: typeof AuthRegisterCaregiverRouteImport
+      parentRoute: typeof AuthRegisterRoute
+    }
   }
 }
 
 interface AuthRegisterRouteChildren {
+  AuthRegisterCaregiverRoute: typeof AuthRegisterCaregiverRoute
   AuthRegisterFamilyRoute: typeof AuthRegisterFamilyRoute
 }
 
 const AuthRegisterRouteChildren: AuthRegisterRouteChildren = {
+  AuthRegisterCaregiverRoute: AuthRegisterCaregiverRoute,
   AuthRegisterFamilyRoute: AuthRegisterFamilyRoute,
 }
 
