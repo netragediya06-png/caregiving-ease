@@ -14,6 +14,7 @@ import { Route as CaregiverRouteImport } from './routes/caregiver'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
+import { Route as CaregiverIndexRouteImport } from './routes/caregiver.index'
 import { Route as DashboardServicesRouteImport } from './routes/dashboard.services'
 import { Route as DashboardProfileRouteImport } from './routes/dashboard.profile'
 import { Route as DashboardPatientsRouteImport } from './routes/dashboard.patients'
@@ -51,6 +52,11 @@ const DashboardIndexRoute = DashboardIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => DashboardRoute,
+} as any)
+const CaregiverIndexRoute = CaregiverIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => CaregiverRoute,
 } as any)
 const DashboardServicesRoute = DashboardServicesRouteImport.update({
   id: '/services',
@@ -117,7 +123,7 @@ const AuthRegisterCaregiverRoute = AuthRegisterCaregiverRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
-  '/caregiver': typeof CaregiverRoute
+  '/caregiver': typeof CaregiverRouteWithChildren
   '/dashboard': typeof DashboardRouteWithChildren
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/login': typeof AuthLoginRoute
@@ -127,6 +133,7 @@ export interface FileRoutesByFullPath {
   '/dashboard/patients': typeof DashboardPatientsRoute
   '/dashboard/profile': typeof DashboardProfileRoute
   '/dashboard/services': typeof DashboardServicesRoute
+  '/caregiver/': typeof CaregiverIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/auth/register/caregiver': typeof AuthRegisterCaregiverRoute
   '/auth/register/family': typeof AuthRegisterFamilyRoute
@@ -136,7 +143,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
-  '/caregiver': typeof CaregiverRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/register': typeof AuthRegisterRouteWithChildren
@@ -145,6 +151,7 @@ export interface FileRoutesByTo {
   '/dashboard/patients': typeof DashboardPatientsRoute
   '/dashboard/profile': typeof DashboardProfileRoute
   '/dashboard/services': typeof DashboardServicesRoute
+  '/caregiver': typeof CaregiverIndexRoute
   '/dashboard': typeof DashboardIndexRoute
   '/auth/register/caregiver': typeof AuthRegisterCaregiverRoute
   '/auth/register/family': typeof AuthRegisterFamilyRoute
@@ -155,7 +162,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
-  '/caregiver': typeof CaregiverRoute
+  '/caregiver': typeof CaregiverRouteWithChildren
   '/dashboard': typeof DashboardRouteWithChildren
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/login': typeof AuthLoginRoute
@@ -165,6 +172,7 @@ export interface FileRoutesById {
   '/dashboard/patients': typeof DashboardPatientsRoute
   '/dashboard/profile': typeof DashboardProfileRoute
   '/dashboard/services': typeof DashboardServicesRoute
+  '/caregiver/': typeof CaregiverIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/auth/register/caregiver': typeof AuthRegisterCaregiverRoute
   '/auth/register/family': typeof AuthRegisterFamilyRoute
@@ -186,6 +194,7 @@ export interface FileRouteTypes {
     | '/dashboard/patients'
     | '/dashboard/profile'
     | '/dashboard/services'
+    | '/caregiver/'
     | '/dashboard/'
     | '/auth/register/caregiver'
     | '/auth/register/family'
@@ -195,7 +204,6 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/admin'
-    | '/caregiver'
     | '/auth/forgot-password'
     | '/auth/login'
     | '/auth/register'
@@ -204,6 +212,7 @@ export interface FileRouteTypes {
     | '/dashboard/patients'
     | '/dashboard/profile'
     | '/dashboard/services'
+    | '/caregiver'
     | '/dashboard'
     | '/auth/register/caregiver'
     | '/auth/register/family'
@@ -223,6 +232,7 @@ export interface FileRouteTypes {
     | '/dashboard/patients'
     | '/dashboard/profile'
     | '/dashboard/services'
+    | '/caregiver/'
     | '/dashboard/'
     | '/auth/register/caregiver'
     | '/auth/register/family'
@@ -233,7 +243,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRoute
-  CaregiverRoute: typeof CaregiverRoute
+  CaregiverRoute: typeof CaregiverRouteWithChildren
   DashboardRoute: typeof DashboardRouteWithChildren
   AuthForgotPasswordRoute: typeof AuthForgotPasswordRoute
   AuthLoginRoute: typeof AuthLoginRoute
@@ -276,6 +286,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/dashboard/'
       preLoaderRoute: typeof DashboardIndexRouteImport
       parentRoute: typeof DashboardRoute
+    }
+    '/caregiver/': {
+      id: '/caregiver/'
+      path: '/'
+      fullPath: '/caregiver/'
+      preLoaderRoute: typeof CaregiverIndexRouteImport
+      parentRoute: typeof CaregiverRoute
     }
     '/dashboard/services': {
       id: '/dashboard/services'
@@ -364,6 +381,18 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface CaregiverRouteChildren {
+  CaregiverIndexRoute: typeof CaregiverIndexRoute
+}
+
+const CaregiverRouteChildren: CaregiverRouteChildren = {
+  CaregiverIndexRoute: CaregiverIndexRoute,
+}
+
+const CaregiverRouteWithChildren = CaregiverRoute._addFileChildren(
+  CaregiverRouteChildren,
+)
+
 interface DashboardRouteChildren {
   DashboardBookingsRoute: typeof DashboardBookingsRoute
   DashboardHistoryRoute: typeof DashboardHistoryRoute
@@ -407,7 +436,7 @@ const AuthRegisterRouteWithChildren = AuthRegisterRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRoute,
-  CaregiverRoute: CaregiverRoute,
+  CaregiverRoute: CaregiverRouteWithChildren,
   DashboardRoute: DashboardRouteWithChildren,
   AuthForgotPasswordRoute: AuthForgotPasswordRoute,
   AuthLoginRoute: AuthLoginRoute,
