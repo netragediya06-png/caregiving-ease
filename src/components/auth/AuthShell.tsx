@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { HeartPulse } from "lucide-react";
 import { ReactNode } from "react";
+import heroCare from "@/assets/hero-care.jpg";
 
 export function AuthShell({ title, subtitle, children, side }: { title: string; subtitle?: string; children: ReactNode; side?: ReactNode }) {
   return (

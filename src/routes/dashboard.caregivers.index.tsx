@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { PageHeader } from "@/components/dashboard/DashboardLayout";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -64,7 +64,10 @@ function Browse() {
         {list.map((c) => (
           <div key={c.id} className="surface-card flex flex-col p-5">
             <div className="flex items-start gap-4">
-              <Avatar className="h-14 w-14"><AvatarFallback className="bg-primary text-primary-foreground">{c.initials}</AvatarFallback></Avatar>
+              <Avatar className="h-14 w-14">
+                <AvatarImage src={c.photo} alt={c.name} />
+                <AvatarFallback className="bg-primary text-primary-foreground">{c.initials}</AvatarFallback>
+              </Avatar>
               <div className="min-w-0 flex-1">
                 <div className="flex items-center gap-1.5">
                   <h3 className="truncate font-semibold">{c.name}</h3>

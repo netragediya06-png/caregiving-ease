@@ -202,22 +202,32 @@ function Landing() {
       {/* BENEFITS */}
       <section className="border-y border-border bg-card/40">
         <div className="container-page grid gap-12 py-20 md:py-28 lg:grid-cols-2 lg:items-center">
+          <div className="relative overflow-hidden rounded-3xl border border-border shadow-card">
+            <img
+              src={carePhysio}
+              alt="A physiotherapist helping an elderly man with gentle stretching at home"
+              width={1280}
+              height={960}
+              loading="lazy"
+              className="h-full w-full object-cover"
+            />
+          </div>
           <div>
             <SectionHeader align="left" eyebrow="Why home care" title="Healing happens best at home" desc="Familiar surroundings, family nearby, and one-to-one attention — proven to improve outcomes for seniors." />
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {[
-              { t: "1:1 personalized care", d: "Care plans built around your loved one's needs and routine." },
-              { t: "Family in the loop", d: "Real-time visit notes, vitals, and updates after every shift." },
-              { t: "Verified professionals", d: "Background checks, credentials, and ongoing training." },
-              { t: "Transparent pricing", d: "Upfront rates with no surprise fees. Pay only for what you use." },
-            ].map((b) => (
-              <div key={b.t} className="surface-card p-5">
-                <BadgeCheck className="h-5 w-5 text-primary" />
-                <h4 className="mt-3 font-semibold">{b.t}</h4>
-                <p className="mt-1 text-sm text-muted-foreground">{b.d}</p>
-              </div>
-            ))}
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {[
+                { t: "1:1 personalized care", d: "Care plans built around your loved one's needs and routine." },
+                { t: "Family in the loop", d: "Real-time visit notes, vitals, and updates after every shift." },
+                { t: "Verified professionals", d: "Background checks, credentials, and ongoing training." },
+                { t: "Transparent pricing", d: "Upfront rates with no surprise fees. Pay only for what you use." },
+              ].map((b) => (
+                <div key={b.t} className="surface-card p-5">
+                  <BadgeCheck className="h-5 w-5 text-primary" />
+                  <h4 className="mt-3 font-semibold">{b.t}</h4>
+                  <p className="mt-1 text-sm text-muted-foreground">{b.d}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
