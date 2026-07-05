@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { HeartPulse } from "lucide-react";
 import { ReactNode } from "react";
+import heroCare from "@/assets/hero-care.jpg";
 
 export function AuthShell({ title, subtitle, children, side }: { title: string; subtitle?: string; children: ReactNode; side?: ReactNode }) {
   return (
@@ -22,12 +23,18 @@ export function AuthShell({ title, subtitle, children, side }: { title: string; 
         <p className="text-xs text-muted-foreground">© {new Date().getFullYear()} SilverCare Health</p>
       </div>
 
-      <aside className="hero-gradient relative hidden border-l border-border lg:block">
+      <aside className="relative hidden overflow-hidden border-l border-border lg:block">
+        <img
+          src={heroCare}
+          alt="A SilverCare nurse with a smiling elderly woman at home"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/10 via-background/40 to-background/85" />
         <div className="absolute inset-0 flex flex-col justify-between p-12">
-          <div className="rounded-2xl border border-border/70 bg-card/70 p-6 shadow-soft backdrop-blur">
+          <div className="rounded-2xl border border-border/70 bg-card/80 p-6 shadow-soft backdrop-blur">
             <p className="text-xs font-medium uppercase tracking-wider text-primary">Trusted by families</p>
             <p className="mt-3 font-display text-2xl leading-snug">
-              “The nurse assigned to Dad has been a blessing — thoughtful, skilled, and on time, every visit.”
+              "The nurse assigned to Dad has been a blessing — thoughtful, skilled, and on time, every visit."
             </p>
             <p className="mt-4 text-sm text-muted-foreground">Anjali R. · Bengaluru</p>
           </div>
@@ -38,7 +45,7 @@ export function AuthShell({ title, subtitle, children, side }: { title: string; 
                 { v: "18,500+", l: "Families served" },
                 { v: "4.9 / 5", l: "Average rating" },
               ].map((s) => (
-                <div key={s.l} className="rounded-2xl border border-border/70 bg-card/70 p-4 backdrop-blur">
+                <div key={s.l} className="rounded-2xl border border-border/70 bg-card/80 p-4 backdrop-blur">
                   <p className="font-display text-2xl font-semibold">{s.v}</p>
                   <p className="mt-1 text-xs text-muted-foreground">{s.l}</p>
                 </div>

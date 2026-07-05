@@ -6,10 +6,12 @@ import {
 import { SiteNavbar } from "@/components/site/SiteNavbar";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { caregivers, services, testimonials, faqs, stats } from "@/lib/mock-data";
+import heroCare from "@/assets/hero-care.jpg";
+import carePhysio from "@/assets/care-physio.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -58,37 +60,45 @@ function Landing() {
             </div>
           </div>
 
-          {/* Visual mock card */}
+          {/* Visual — real photo with floating cards */}
           <div className="relative">
-            <div className="surface-card relative p-6 shadow-card">
+            <div className="relative overflow-hidden rounded-3xl border border-border shadow-card">
+              <img
+                src={heroCare}
+                alt="A SilverCare nurse holding hands with a smiling elderly woman at home"
+                width={1280}
+                height={1600}
+                className="h-[520px] w-full object-cover"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent" />
+            </div>
+
+            <div className="surface-card absolute -bottom-6 left-6 right-6 p-4 shadow-card sm:left-auto sm:right-6 sm:w-72">
               <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">Today's visit</p>
-                  <h3 className="mt-1 font-display text-xl font-semibold">Anita Sharma · RN</h3>
-                  <p className="text-sm text-muted-foreground">Diabetes care · 9:00 AM – 1:00 PM</p>
+                <div className="min-w-0">
+                  <p className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">Today's visit</p>
+                  <p className="mt-0.5 truncate font-semibold">Anita Sharma · RN</p>
+                  <p className="truncate text-xs text-muted-foreground">Diabetes care · 9:00 AM</p>
                 </div>
-                <Avatar className="h-12 w-12"><AvatarFallback className="bg-primary text-primary-foreground">AS</AvatarFallback></Avatar>
+                <Avatar className="h-10 w-10">
+                  <AvatarImage src={caregivers[0].photo} alt="Anita Sharma" />
+                  <AvatarFallback className="bg-primary text-primary-foreground">AS</AvatarFallback>
+                </Avatar>
               </div>
-              <div className="mt-5 grid grid-cols-3 gap-3 text-center">
-                {[{l:"Rating",v:"4.9"},{l:"Experience",v:"9 yrs"},{l:"Visits",v:"180+"}].map((m)=> (
-                  <div key={m.l} className="rounded-xl bg-muted p-3">
-                    <p className="font-display text-lg font-semibold">{m.v}</p>
-                    <p className="text-[11px] text-muted-foreground">{m.l}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-5 rounded-xl border border-border bg-primary-soft/60 p-4">
-                <p className="text-xs font-medium uppercase tracking-wider text-primary">Care notes · last visit</p>
-                <p className="mt-1.5 text-sm">Vitals stable. Helped with morning walk and medication. Family briefed.</p>
-              </div>
-              <div className="mt-5 flex gap-2">
+              <div className="mt-3 flex gap-2">
                 <Button size="sm" className="flex-1 rounded-full">Message</Button>
-                <Button size="sm" variant="outline" className="flex-1 rounded-full"><PhoneCall className="mr-1.5 h-3.5 w-3.5" />Call</Button>
+                <Button size="sm" variant="outline" className="flex-1 rounded-full">
+                  <PhoneCall className="mr-1.5 h-3.5 w-3.5" />Call
+                </Button>
               </div>
             </div>
-            <div className="surface-card absolute -bottom-6 -left-6 hidden w-56 p-4 sm:block">
-              <div className="flex items-center gap-2"><BadgeCheck className="h-4 w-4 text-success" /><p className="text-xs font-medium">Identity verified</p></div>
-              <p className="mt-2 text-xs text-muted-foreground">Gov ID, certifications, and background check confirmed.</p>
+
+            <div className="surface-card absolute -top-4 -left-4 hidden w-52 p-3 sm:block">
+              <div className="flex items-center gap-2">
+                <BadgeCheck className="h-4 w-4 text-success" />
+                <p className="text-xs font-medium">Identity verified</p>
+              </div>
+              <p className="mt-1 text-[11px] text-muted-foreground">Gov ID, certs & background check confirmed.</p>
             </div>
           </div>
         </div>
@@ -160,7 +170,10 @@ function Landing() {
           {caregivers.slice(0, 6).map((c) => (
             <div key={c.id} className="surface-card p-5">
               <div className="flex items-start gap-4">
-                <Avatar className="h-14 w-14"><AvatarFallback className="bg-primary text-primary-foreground">{c.initials}</AvatarFallback></Avatar>
+                <Avatar className="h-14 w-14">
+                  <AvatarImage src={c.photo} alt={c.name} />
+                  <AvatarFallback className="bg-primary text-primary-foreground">{c.initials}</AvatarFallback>
+                </Avatar>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-1.5">
                     <h3 className="truncate font-semibold">{c.name}</h3>
@@ -189,22 +202,32 @@ function Landing() {
       {/* BENEFITS */}
       <section className="border-y border-border bg-card/40">
         <div className="container-page grid gap-12 py-20 md:py-28 lg:grid-cols-2 lg:items-center">
+          <div className="relative overflow-hidden rounded-3xl border border-border shadow-card">
+            <img
+              src={carePhysio}
+              alt="A physiotherapist helping an elderly man with gentle stretching at home"
+              width={1280}
+              height={960}
+              loading="lazy"
+              className="h-full w-full object-cover"
+            />
+          </div>
           <div>
             <SectionHeader align="left" eyebrow="Why home care" title="Healing happens best at home" desc="Familiar surroundings, family nearby, and one-to-one attention — proven to improve outcomes for seniors." />
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {[
-              { t: "1:1 personalized care", d: "Care plans built around your loved one's needs and routine." },
-              { t: "Family in the loop", d: "Real-time visit notes, vitals, and updates after every shift." },
-              { t: "Verified professionals", d: "Background checks, credentials, and ongoing training." },
-              { t: "Transparent pricing", d: "Upfront rates with no surprise fees. Pay only for what you use." },
-            ].map((b) => (
-              <div key={b.t} className="surface-card p-5">
-                <BadgeCheck className="h-5 w-5 text-primary" />
-                <h4 className="mt-3 font-semibold">{b.t}</h4>
-                <p className="mt-1 text-sm text-muted-foreground">{b.d}</p>
-              </div>
-            ))}
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {[
+                { t: "1:1 personalized care", d: "Care plans built around your loved one's needs and routine." },
+                { t: "Family in the loop", d: "Real-time visit notes, vitals, and updates after every shift." },
+                { t: "Verified professionals", d: "Background checks, credentials, and ongoing training." },
+                { t: "Transparent pricing", d: "Upfront rates with no surprise fees. Pay only for what you use." },
+              ].map((b) => (
+                <div key={b.t} className="surface-card p-5">
+                  <BadgeCheck className="h-5 w-5 text-primary" />
+                  <h4 className="mt-3 font-semibold">{b.t}</h4>
+                  <p className="mt-1 text-sm text-muted-foreground">{b.d}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
