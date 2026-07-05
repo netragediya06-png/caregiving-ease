@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as CaregiverRouteImport } from './routes/caregiver'
+import { Route as AdminLoginRouteImport } from './routes/admin-login'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
@@ -27,9 +28,13 @@ import { Route as CaregiverHistoryRouteImport } from './routes/caregiver.history
 import { Route as CaregiverEarningsRouteImport } from './routes/caregiver.earnings'
 import { Route as CaregiverDocumentsRouteImport } from './routes/caregiver.documents'
 import { Route as CaregiverAvailabilityRouteImport } from './routes/caregiver.availability'
+import { Route as AuthRegistrationSuccessRouteImport } from './routes/auth.registration-success'
 import { Route as AuthRegisterRouteImport } from './routes/auth.register'
+import { Route as AuthPendingVerificationRouteImport } from './routes/auth.pending-verification'
 import { Route as AuthLoginRouteImport } from './routes/auth.login'
 import { Route as AuthForgotPasswordRouteImport } from './routes/auth.forgot-password'
+import { Route as AuthAccountReviewRouteImport } from './routes/auth.account-review'
+import { Route as AuthAccessDeniedRouteImport } from './routes/auth.access-denied'
 import { Route as AdminUsersRouteImport } from './routes/admin.users'
 import { Route as AdminServicesRouteImport } from './routes/admin.services'
 import { Route as AdminReportsRouteImport } from './routes/admin.reports'
@@ -49,6 +54,11 @@ const DashboardRoute = DashboardRouteImport.update({
 const CaregiverRoute = CaregiverRouteImport.update({
   id: '/caregiver',
   path: '/caregiver',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin-login',
+  path: '/admin-login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminRoute = AdminRouteImport.update({
@@ -131,9 +141,19 @@ const CaregiverAvailabilityRoute = CaregiverAvailabilityRouteImport.update({
   path: '/availability',
   getParentRoute: () => CaregiverRoute,
 } as any)
+const AuthRegistrationSuccessRoute = AuthRegistrationSuccessRouteImport.update({
+  id: '/auth/registration-success',
+  path: '/auth/registration-success',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthRegisterRoute = AuthRegisterRouteImport.update({
   id: '/auth/register',
   path: '/auth/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthPendingVerificationRoute = AuthPendingVerificationRouteImport.update({
+  id: '/auth/pending-verification',
+  path: '/auth/pending-verification',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthLoginRoute = AuthLoginRouteImport.update({
@@ -144,6 +164,16 @@ const AuthLoginRoute = AuthLoginRouteImport.update({
 const AuthForgotPasswordRoute = AuthForgotPasswordRouteImport.update({
   id: '/auth/forgot-password',
   path: '/auth/forgot-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthAccountReviewRoute = AuthAccountReviewRouteImport.update({
+  id: '/auth/account-review',
+  path: '/auth/account-review',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthAccessDeniedRoute = AuthAccessDeniedRouteImport.update({
+  id: '/auth/access-denied',
+  path: '/auth/access-denied',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminUsersRoute = AdminUsersRouteImport.update({
@@ -201,6 +231,7 @@ const AuthRegisterCaregiverRoute = AuthRegisterCaregiverRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteWithChildren
+  '/admin-login': typeof AdminLoginRoute
   '/caregiver': typeof CaregiverRouteWithChildren
   '/dashboard': typeof DashboardRouteWithChildren
   '/admin/bookings': typeof AdminBookingsRoute
@@ -209,9 +240,13 @@ export interface FileRoutesByFullPath {
   '/admin/reports': typeof AdminReportsRoute
   '/admin/services': typeof AdminServicesRoute
   '/admin/users': typeof AdminUsersRoute
+  '/auth/access-denied': typeof AuthAccessDeniedRoute
+  '/auth/account-review': typeof AuthAccountReviewRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/login': typeof AuthLoginRoute
+  '/auth/pending-verification': typeof AuthPendingVerificationRoute
   '/auth/register': typeof AuthRegisterRouteWithChildren
+  '/auth/registration-success': typeof AuthRegistrationSuccessRoute
   '/caregiver/availability': typeof CaregiverAvailabilityRoute
   '/caregiver/documents': typeof CaregiverDocumentsRoute
   '/caregiver/earnings': typeof CaregiverEarningsRoute
@@ -233,15 +268,20 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin-login': typeof AdminLoginRoute
   '/admin/bookings': typeof AdminBookingsRoute
   '/admin/caregivers': typeof AdminCaregiversRoute
   '/admin/complaints': typeof AdminComplaintsRoute
   '/admin/reports': typeof AdminReportsRoute
   '/admin/services': typeof AdminServicesRoute
   '/admin/users': typeof AdminUsersRoute
+  '/auth/access-denied': typeof AuthAccessDeniedRoute
+  '/auth/account-review': typeof AuthAccountReviewRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/login': typeof AuthLoginRoute
+  '/auth/pending-verification': typeof AuthPendingVerificationRoute
   '/auth/register': typeof AuthRegisterRouteWithChildren
+  '/auth/registration-success': typeof AuthRegistrationSuccessRoute
   '/caregiver/availability': typeof CaregiverAvailabilityRoute
   '/caregiver/documents': typeof CaregiverDocumentsRoute
   '/caregiver/earnings': typeof CaregiverEarningsRoute
@@ -265,6 +305,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteWithChildren
+  '/admin-login': typeof AdminLoginRoute
   '/caregiver': typeof CaregiverRouteWithChildren
   '/dashboard': typeof DashboardRouteWithChildren
   '/admin/bookings': typeof AdminBookingsRoute
@@ -273,9 +314,13 @@ export interface FileRoutesById {
   '/admin/reports': typeof AdminReportsRoute
   '/admin/services': typeof AdminServicesRoute
   '/admin/users': typeof AdminUsersRoute
+  '/auth/access-denied': typeof AuthAccessDeniedRoute
+  '/auth/account-review': typeof AuthAccountReviewRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/login': typeof AuthLoginRoute
+  '/auth/pending-verification': typeof AuthPendingVerificationRoute
   '/auth/register': typeof AuthRegisterRouteWithChildren
+  '/auth/registration-success': typeof AuthRegistrationSuccessRoute
   '/caregiver/availability': typeof CaregiverAvailabilityRoute
   '/caregiver/documents': typeof CaregiverDocumentsRoute
   '/caregiver/earnings': typeof CaregiverEarningsRoute
@@ -300,6 +345,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/admin'
+    | '/admin-login'
     | '/caregiver'
     | '/dashboard'
     | '/admin/bookings'
@@ -308,9 +354,13 @@ export interface FileRouteTypes {
     | '/admin/reports'
     | '/admin/services'
     | '/admin/users'
+    | '/auth/access-denied'
+    | '/auth/account-review'
     | '/auth/forgot-password'
     | '/auth/login'
+    | '/auth/pending-verification'
     | '/auth/register'
+    | '/auth/registration-success'
     | '/caregiver/availability'
     | '/caregiver/documents'
     | '/caregiver/earnings'
@@ -332,15 +382,20 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/admin-login'
     | '/admin/bookings'
     | '/admin/caregivers'
     | '/admin/complaints'
     | '/admin/reports'
     | '/admin/services'
     | '/admin/users'
+    | '/auth/access-denied'
+    | '/auth/account-review'
     | '/auth/forgot-password'
     | '/auth/login'
+    | '/auth/pending-verification'
     | '/auth/register'
+    | '/auth/registration-success'
     | '/caregiver/availability'
     | '/caregiver/documents'
     | '/caregiver/earnings'
@@ -363,6 +418,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/admin'
+    | '/admin-login'
     | '/caregiver'
     | '/dashboard'
     | '/admin/bookings'
@@ -371,9 +427,13 @@ export interface FileRouteTypes {
     | '/admin/reports'
     | '/admin/services'
     | '/admin/users'
+    | '/auth/access-denied'
+    | '/auth/account-review'
     | '/auth/forgot-password'
     | '/auth/login'
+    | '/auth/pending-verification'
     | '/auth/register'
+    | '/auth/registration-success'
     | '/caregiver/availability'
     | '/caregiver/documents'
     | '/caregiver/earnings'
@@ -397,11 +457,16 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRouteWithChildren
+  AdminLoginRoute: typeof AdminLoginRoute
   CaregiverRoute: typeof CaregiverRouteWithChildren
   DashboardRoute: typeof DashboardRouteWithChildren
+  AuthAccessDeniedRoute: typeof AuthAccessDeniedRoute
+  AuthAccountReviewRoute: typeof AuthAccountReviewRoute
   AuthForgotPasswordRoute: typeof AuthForgotPasswordRoute
   AuthLoginRoute: typeof AuthLoginRoute
+  AuthPendingVerificationRoute: typeof AuthPendingVerificationRoute
   AuthRegisterRoute: typeof AuthRegisterRouteWithChildren
+  AuthRegistrationSuccessRoute: typeof AuthRegistrationSuccessRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -418,6 +483,13 @@ declare module '@tanstack/react-router' {
       path: '/caregiver'
       fullPath: '/caregiver'
       preLoaderRoute: typeof CaregiverRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin-login': {
+      id: '/admin-login'
+      path: '/admin-login'
+      fullPath: '/admin-login'
+      preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin': {
@@ -532,11 +604,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CaregiverAvailabilityRouteImport
       parentRoute: typeof CaregiverRoute
     }
+    '/auth/registration-success': {
+      id: '/auth/registration-success'
+      path: '/auth/registration-success'
+      fullPath: '/auth/registration-success'
+      preLoaderRoute: typeof AuthRegistrationSuccessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/auth/register': {
       id: '/auth/register'
       path: '/auth/register'
       fullPath: '/auth/register'
       preLoaderRoute: typeof AuthRegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/pending-verification': {
+      id: '/auth/pending-verification'
+      path: '/auth/pending-verification'
+      fullPath: '/auth/pending-verification'
+      preLoaderRoute: typeof AuthPendingVerificationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth/login': {
@@ -551,6 +637,20 @@ declare module '@tanstack/react-router' {
       path: '/auth/forgot-password'
       fullPath: '/auth/forgot-password'
       preLoaderRoute: typeof AuthForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/account-review': {
+      id: '/auth/account-review'
+      path: '/auth/account-review'
+      fullPath: '/auth/account-review'
+      preLoaderRoute: typeof AuthAccountReviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/access-denied': {
+      id: '/auth/access-denied'
+      path: '/auth/access-denied'
+      fullPath: '/auth/access-denied'
+      preLoaderRoute: typeof AuthAccessDeniedRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/users': {
@@ -715,22 +815,17 @@ const AuthRegisterRouteWithChildren = AuthRegisterRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRouteWithChildren,
+  AdminLoginRoute: AdminLoginRoute,
   CaregiverRoute: CaregiverRouteWithChildren,
   DashboardRoute: DashboardRouteWithChildren,
+  AuthAccessDeniedRoute: AuthAccessDeniedRoute,
+  AuthAccountReviewRoute: AuthAccountReviewRoute,
   AuthForgotPasswordRoute: AuthForgotPasswordRoute,
   AuthLoginRoute: AuthLoginRoute,
+  AuthPendingVerificationRoute: AuthPendingVerificationRoute,
   AuthRegisterRoute: AuthRegisterRouteWithChildren,
+  AuthRegistrationSuccessRoute: AuthRegistrationSuccessRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
