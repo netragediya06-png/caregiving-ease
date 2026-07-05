@@ -1,5 +1,9 @@
 // Realistic mock data for the platform UI.
 
+import caregiver1 from "@/assets/caregiver-1.jpg";
+import caregiver2 from "@/assets/caregiver-2.jpg";
+import caregiver3 from "@/assets/caregiver-3.jpg";
+
 export type Caregiver = {
   id: string;
   name: string;
@@ -16,6 +20,7 @@ export type Caregiver = {
   bio: string;
   initials: string;
   gender: "Female" | "Male";
+  photo?: string;
 };
 
 export const caregivers: Caregiver[] = [
@@ -26,7 +31,7 @@ export const caregivers: Caregiver[] = [
     languages: ["English", "Hindi", "Kannada"],
     specialties: ["Diabetes care", "Wound dressing", "Post-op recovery"],
     bio: "RN with 9 years in geriatric and post-surgical home care. Calm, attentive, and family-first.",
-    initials: "AS",
+    initials: "AS", photo: caregiver1,
   },
   {
     id: "cg-002", name: "Rahul Mehta", role: "Physiotherapist", city: "Mumbai",
@@ -35,7 +40,7 @@ export const caregivers: Caregiver[] = [
     languages: ["English", "Hindi", "Marathi"],
     specialties: ["Stroke rehab", "Joint mobility", "Fall prevention"],
     bio: "Physio specialized in elderly mobility and post-stroke rehabilitation programs at home.",
-    initials: "RM",
+    initials: "RM", photo: caregiver2,
   },
   {
     id: "cg-003", name: "Priya Nair", role: "Elderly Attendant", city: "Kochi",
@@ -44,7 +49,7 @@ export const caregivers: Caregiver[] = [
     languages: ["English", "Malayalam", "Tamil"],
     specialties: ["Daily living support", "Companion care", "Medication reminders"],
     bio: "Warm, patient elderly attendant with experience caring for parents with dementia.",
-    initials: "PN",
+    initials: "PN", photo: caregiver3,
   },
   {
     id: "cg-004", name: "Dr. Imran Khan", role: "Post-Hospital Care", city: "Delhi",
