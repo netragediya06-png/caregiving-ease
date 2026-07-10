@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
-import { ShieldCheck } from "lucide-react";
+
 
 export const Route = createFileRoute("/auth/login")({ component: Login });
 
@@ -41,11 +41,6 @@ function Login() {
           New to SilverCare?{" "}
           <Link to="/auth/register" className="font-medium text-primary hover:underline">
             Create an account
-          </Link>
-        </p>
-        <p className="text-center text-xs text-muted-foreground">
-          <Link to="/admin-login" className="inline-flex items-center gap-1 hover:text-primary hover:underline">
-            <ShieldCheck className="h-3 w-3" /> Admin sign in
           </Link>
         </p>
       </form>

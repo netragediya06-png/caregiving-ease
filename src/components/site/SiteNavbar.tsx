@@ -4,11 +4,12 @@ import { Menu, X, HeartPulse } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navLinks = [
-  { to: "/#services", label: "Services" },
-  { to: "/#how", label: "How it works" },
-  { to: "/#caregivers", label: "Caregivers" },
-  { to: "/#faq", label: "FAQ" },
-];
+  { to: "/services", label: "Services" },
+  { to: "/caregivers", label: "Caregivers" },
+  { to: "/how-it-works", label: "How it works" },
+  { to: "/about", label: "About" },
+  { to: "/contact", label: "Contact" },
+] as const;
 
 export function SiteNavbar() {
   const [open, setOpen] = useState(false);
@@ -22,20 +23,25 @@ export function SiteNavbar() {
           <span className="font-display text-xl font-semibold tracking-tight">SilverCare</span>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="hidden items-center gap-7 md:flex">
           {navLinks.map((l) => (
-            <a key={l.to} href={l.to} className="text-sm text-muted-foreground transition hover:text-foreground">
+            <Link
+              key={l.to}
+              to={l.to}
+              className="text-sm text-muted-foreground transition hover:text-foreground"
+              activeProps={{ className: "text-foreground font-medium" }}
+            >
               {l.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
         <div className="hidden items-center gap-2 md:flex">
           <Button asChild variant="ghost" size="sm">
-            <Link to="/auth/login">Sign in</Link>
+            <Link to="/auth/login">Login</Link>
           </Button>
           <Button asChild size="sm" className="rounded-full">
-            <Link to="/auth/register">Get started</Link>
+            <Link to="/auth/register">Register</Link>
           </Button>
         </div>
 
@@ -52,13 +58,18 @@ export function SiteNavbar() {
         <div className="border-t border-border bg-background md:hidden">
           <div className="container-page flex flex-col gap-1 py-3">
             {navLinks.map((l) => (
-              <a key={l.to} href={l.to} onClick={() => setOpen(false)} className="rounded-lg px-3 py-2 text-sm text-muted-foreground hover:bg-muted hover:text-foreground">
+              <Link
+                key={l.to}
+                to={l.to}
+                onClick={() => setOpen(false)}
+                className="rounded-lg px-3 py-2 text-sm text-muted-foreground hover:bg-muted hover:text-foreground"
+              >
                 {l.label}
-              </a>
+              </Link>
             ))}
             <div className="mt-2 flex gap-2 px-1">
-              <Button asChild variant="outline" className="flex-1"><Link to="/auth/login">Sign in</Link></Button>
-              <Button asChild className="flex-1"><Link to="/auth/register">Get started</Link></Button>
+              <Button asChild variant="outline" className="flex-1"><Link to="/auth/login">Login</Link></Button>
+              <Button asChild className="flex-1"><Link to="/auth/register">Register</Link></Button>
             </div>
           </div>
         </div>

@@ -9,25 +9,38 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CaregiversRouteImport } from './routes/caregivers'
 import { Route as CaregiverRouteImport } from './routes/caregiver'
-import { Route as AdminLoginRouteImport } from './routes/admin-login'
-import { Route as AdminRouteImport } from './routes/admin'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
 import { Route as CaregiverIndexRouteImport } from './routes/caregiver.index'
-import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as DashboardSettingsRouteImport } from './routes/dashboard.settings'
 import { Route as DashboardServicesRouteImport } from './routes/dashboard.services'
 import { Route as DashboardProfileRouteImport } from './routes/dashboard.profile'
 import { Route as DashboardPatientsRouteImport } from './routes/dashboard.patients'
+import { Route as DashboardNotificationsRouteImport } from './routes/dashboard.notifications'
 import { Route as DashboardHistoryRouteImport } from './routes/dashboard.history'
 import { Route as DashboardBookingsRouteImport } from './routes/dashboard.bookings'
+import { Route as CaregiverSettingsRouteImport } from './routes/caregiver.settings'
+import { Route as CaregiverServicesRouteImport } from './routes/caregiver.services'
+import { Route as CaregiverReviewsRouteImport } from './routes/caregiver.reviews'
 import { Route as CaregiverRequestsRouteImport } from './routes/caregiver.requests'
 import { Route as CaregiverProfileRouteImport } from './routes/caregiver.profile'
+import { Route as CaregiverPatientsRouteImport } from './routes/caregiver.patients'
+import { Route as CaregiverNotificationsRouteImport } from './routes/caregiver.notifications'
 import { Route as CaregiverHistoryRouteImport } from './routes/caregiver.history'
 import { Route as CaregiverEarningsRouteImport } from './routes/caregiver.earnings'
 import { Route as CaregiverDocumentsRouteImport } from './routes/caregiver.documents'
+import { Route as CaregiverCareNotesRouteImport } from './routes/caregiver.care-notes'
 import { Route as CaregiverAvailabilityRouteImport } from './routes/caregiver.availability'
+import { Route as CaregiverActiveVisitsRouteImport } from './routes/caregiver.active-visits'
+import { Route as AuthVerificationRejectedRouteImport } from './routes/auth.verification-rejected'
+import { Route as AuthVerificationApprovedRouteImport } from './routes/auth.verification-approved'
 import { Route as AuthRegistrationSuccessRouteImport } from './routes/auth.registration-success'
 import { Route as AuthRegisterRouteImport } from './routes/auth.register'
 import { Route as AuthPendingVerificationRouteImport } from './routes/auth.pending-verification'
@@ -35,21 +48,35 @@ import { Route as AuthLoginRouteImport } from './routes/auth.login'
 import { Route as AuthForgotPasswordRouteImport } from './routes/auth.forgot-password'
 import { Route as AuthAccountReviewRouteImport } from './routes/auth.account-review'
 import { Route as AuthAccessDeniedRouteImport } from './routes/auth.access-denied'
-import { Route as AdminUsersRouteImport } from './routes/admin.users'
-import { Route as AdminServicesRouteImport } from './routes/admin.services'
-import { Route as AdminReportsRouteImport } from './routes/admin.reports'
-import { Route as AdminComplaintsRouteImport } from './routes/admin.complaints'
-import { Route as AdminCaregiversRouteImport } from './routes/admin.caregivers'
-import { Route as AdminBookingsRouteImport } from './routes/admin.bookings'
 import { Route as DashboardCaregiversIndexRouteImport } from './routes/dashboard.caregivers.index'
 import { Route as AuthRegisterIndexRouteImport } from './routes/auth.register.index'
 import { Route as DashboardCaregiversIdRouteImport } from './routes/dashboard.caregivers.$id'
 import { Route as AuthRegisterFamilyRouteImport } from './routes/auth.register.family'
 import { Route as AuthRegisterCaregiverRouteImport } from './routes/auth.register.caregiver'
 
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HowItWorksRoute = HowItWorksRouteImport.update({
+  id: '/how-it-works',
+  path: '/how-it-works',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CaregiversRoute = CaregiversRouteImport.update({
+  id: '/caregivers',
+  path: '/caregivers',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CaregiverRoute = CaregiverRouteImport.update({
@@ -57,14 +84,9 @@ const CaregiverRoute = CaregiverRouteImport.update({
   path: '/caregiver',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AdminLoginRoute = AdminLoginRouteImport.update({
-  id: '/admin-login',
-  path: '/admin-login',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminRoute = AdminRouteImport.update({
-  id: '/admin',
-  path: '/admin',
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -82,10 +104,10 @@ const CaregiverIndexRoute = CaregiverIndexRouteImport.update({
   path: '/',
   getParentRoute: () => CaregiverRoute,
 } as any)
-const AdminIndexRoute = AdminIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => AdminRoute,
+const DashboardSettingsRoute = DashboardSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => DashboardRoute,
 } as any)
 const DashboardServicesRoute = DashboardServicesRouteImport.update({
   id: '/services',
@@ -102,6 +124,11 @@ const DashboardPatientsRoute = DashboardPatientsRouteImport.update({
   path: '/patients',
   getParentRoute: () => DashboardRoute,
 } as any)
+const DashboardNotificationsRoute = DashboardNotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => DashboardRoute,
+} as any)
 const DashboardHistoryRoute = DashboardHistoryRouteImport.update({
   id: '/history',
   path: '/history',
@@ -112,6 +139,21 @@ const DashboardBookingsRoute = DashboardBookingsRouteImport.update({
   path: '/bookings',
   getParentRoute: () => DashboardRoute,
 } as any)
+const CaregiverSettingsRoute = CaregiverSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => CaregiverRoute,
+} as any)
+const CaregiverServicesRoute = CaregiverServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => CaregiverRoute,
+} as any)
+const CaregiverReviewsRoute = CaregiverReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
+  getParentRoute: () => CaregiverRoute,
+} as any)
 const CaregiverRequestsRoute = CaregiverRequestsRouteImport.update({
   id: '/requests',
   path: '/requests',
@@ -120,6 +162,16 @@ const CaregiverRequestsRoute = CaregiverRequestsRouteImport.update({
 const CaregiverProfileRoute = CaregiverProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
+  getParentRoute: () => CaregiverRoute,
+} as any)
+const CaregiverPatientsRoute = CaregiverPatientsRouteImport.update({
+  id: '/patients',
+  path: '/patients',
+  getParentRoute: () => CaregiverRoute,
+} as any)
+const CaregiverNotificationsRoute = CaregiverNotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
   getParentRoute: () => CaregiverRoute,
 } as any)
 const CaregiverHistoryRoute = CaregiverHistoryRouteImport.update({
@@ -137,11 +189,33 @@ const CaregiverDocumentsRoute = CaregiverDocumentsRouteImport.update({
   path: '/documents',
   getParentRoute: () => CaregiverRoute,
 } as any)
+const CaregiverCareNotesRoute = CaregiverCareNotesRouteImport.update({
+  id: '/care-notes',
+  path: '/care-notes',
+  getParentRoute: () => CaregiverRoute,
+} as any)
 const CaregiverAvailabilityRoute = CaregiverAvailabilityRouteImport.update({
   id: '/availability',
   path: '/availability',
   getParentRoute: () => CaregiverRoute,
 } as any)
+const CaregiverActiveVisitsRoute = CaregiverActiveVisitsRouteImport.update({
+  id: '/active-visits',
+  path: '/active-visits',
+  getParentRoute: () => CaregiverRoute,
+} as any)
+const AuthVerificationRejectedRoute =
+  AuthVerificationRejectedRouteImport.update({
+    id: '/auth/verification-rejected',
+    path: '/auth/verification-rejected',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AuthVerificationApprovedRoute =
+  AuthVerificationApprovedRouteImport.update({
+    id: '/auth/verification-approved',
+    path: '/auth/verification-approved',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const AuthRegistrationSuccessRoute = AuthRegistrationSuccessRouteImport.update({
   id: '/auth/registration-success',
   path: '/auth/registration-success',
@@ -177,36 +251,6 @@ const AuthAccessDeniedRoute = AuthAccessDeniedRouteImport.update({
   path: '/auth/access-denied',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AdminUsersRoute = AdminUsersRouteImport.update({
-  id: '/users',
-  path: '/users',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminServicesRoute = AdminServicesRouteImport.update({
-  id: '/services',
-  path: '/services',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminReportsRoute = AdminReportsRouteImport.update({
-  id: '/reports',
-  path: '/reports',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminComplaintsRoute = AdminComplaintsRouteImport.update({
-  id: '/complaints',
-  path: '/complaints',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminCaregiversRoute = AdminCaregiversRouteImport.update({
-  id: '/caregivers',
-  path: '/caregivers',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminBookingsRoute = AdminBookingsRouteImport.update({
-  id: '/bookings',
-  path: '/bookings',
-  getParentRoute: () => AdminRoute,
-} as any)
 const DashboardCaregiversIndexRoute =
   DashboardCaregiversIndexRouteImport.update({
     id: '/caregivers/',
@@ -236,16 +280,13 @@ const AuthRegisterCaregiverRoute = AuthRegisterCaregiverRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/admin': typeof AdminRouteWithChildren
-  '/admin-login': typeof AdminLoginRoute
+  '/about': typeof AboutRoute
   '/caregiver': typeof CaregiverRouteWithChildren
+  '/caregivers': typeof CaregiversRoute
+  '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRouteWithChildren
-  '/admin/bookings': typeof AdminBookingsRoute
-  '/admin/caregivers': typeof AdminCaregiversRoute
-  '/admin/complaints': typeof AdminComplaintsRoute
-  '/admin/reports': typeof AdminReportsRoute
-  '/admin/services': typeof AdminServicesRoute
-  '/admin/users': typeof AdminUsersRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/services': typeof ServicesRoute
   '/auth/access-denied': typeof AuthAccessDeniedRoute
   '/auth/account-review': typeof AuthAccountReviewRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
@@ -253,18 +294,28 @@ export interface FileRoutesByFullPath {
   '/auth/pending-verification': typeof AuthPendingVerificationRoute
   '/auth/register': typeof AuthRegisterRouteWithChildren
   '/auth/registration-success': typeof AuthRegistrationSuccessRoute
+  '/auth/verification-approved': typeof AuthVerificationApprovedRoute
+  '/auth/verification-rejected': typeof AuthVerificationRejectedRoute
+  '/caregiver/active-visits': typeof CaregiverActiveVisitsRoute
   '/caregiver/availability': typeof CaregiverAvailabilityRoute
+  '/caregiver/care-notes': typeof CaregiverCareNotesRoute
   '/caregiver/documents': typeof CaregiverDocumentsRoute
   '/caregiver/earnings': typeof CaregiverEarningsRoute
   '/caregiver/history': typeof CaregiverHistoryRoute
+  '/caregiver/notifications': typeof CaregiverNotificationsRoute
+  '/caregiver/patients': typeof CaregiverPatientsRoute
   '/caregiver/profile': typeof CaregiverProfileRoute
   '/caregiver/requests': typeof CaregiverRequestsRoute
+  '/caregiver/reviews': typeof CaregiverReviewsRoute
+  '/caregiver/services': typeof CaregiverServicesRoute
+  '/caregiver/settings': typeof CaregiverSettingsRoute
   '/dashboard/bookings': typeof DashboardBookingsRoute
   '/dashboard/history': typeof DashboardHistoryRoute
+  '/dashboard/notifications': typeof DashboardNotificationsRoute
   '/dashboard/patients': typeof DashboardPatientsRoute
   '/dashboard/profile': typeof DashboardProfileRoute
   '/dashboard/services': typeof DashboardServicesRoute
-  '/admin/': typeof AdminIndexRoute
+  '/dashboard/settings': typeof DashboardSettingsRoute
   '/caregiver/': typeof CaregiverIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/auth/register/caregiver': typeof AuthRegisterCaregiverRoute
@@ -275,31 +326,39 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/admin-login': typeof AdminLoginRoute
-  '/admin/bookings': typeof AdminBookingsRoute
-  '/admin/caregivers': typeof AdminCaregiversRoute
-  '/admin/complaints': typeof AdminComplaintsRoute
-  '/admin/reports': typeof AdminReportsRoute
-  '/admin/services': typeof AdminServicesRoute
-  '/admin/users': typeof AdminUsersRoute
+  '/about': typeof AboutRoute
+  '/caregivers': typeof CaregiversRoute
+  '/contact': typeof ContactRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/services': typeof ServicesRoute
   '/auth/access-denied': typeof AuthAccessDeniedRoute
   '/auth/account-review': typeof AuthAccountReviewRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/pending-verification': typeof AuthPendingVerificationRoute
   '/auth/registration-success': typeof AuthRegistrationSuccessRoute
+  '/auth/verification-approved': typeof AuthVerificationApprovedRoute
+  '/auth/verification-rejected': typeof AuthVerificationRejectedRoute
+  '/caregiver/active-visits': typeof CaregiverActiveVisitsRoute
   '/caregiver/availability': typeof CaregiverAvailabilityRoute
+  '/caregiver/care-notes': typeof CaregiverCareNotesRoute
   '/caregiver/documents': typeof CaregiverDocumentsRoute
   '/caregiver/earnings': typeof CaregiverEarningsRoute
   '/caregiver/history': typeof CaregiverHistoryRoute
+  '/caregiver/notifications': typeof CaregiverNotificationsRoute
+  '/caregiver/patients': typeof CaregiverPatientsRoute
   '/caregiver/profile': typeof CaregiverProfileRoute
   '/caregiver/requests': typeof CaregiverRequestsRoute
+  '/caregiver/reviews': typeof CaregiverReviewsRoute
+  '/caregiver/services': typeof CaregiverServicesRoute
+  '/caregiver/settings': typeof CaregiverSettingsRoute
   '/dashboard/bookings': typeof DashboardBookingsRoute
   '/dashboard/history': typeof DashboardHistoryRoute
+  '/dashboard/notifications': typeof DashboardNotificationsRoute
   '/dashboard/patients': typeof DashboardPatientsRoute
   '/dashboard/profile': typeof DashboardProfileRoute
   '/dashboard/services': typeof DashboardServicesRoute
-  '/admin': typeof AdminIndexRoute
+  '/dashboard/settings': typeof DashboardSettingsRoute
   '/caregiver': typeof CaregiverIndexRoute
   '/dashboard': typeof DashboardIndexRoute
   '/auth/register/caregiver': typeof AuthRegisterCaregiverRoute
@@ -311,16 +370,13 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/admin': typeof AdminRouteWithChildren
-  '/admin-login': typeof AdminLoginRoute
+  '/about': typeof AboutRoute
   '/caregiver': typeof CaregiverRouteWithChildren
+  '/caregivers': typeof CaregiversRoute
+  '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRouteWithChildren
-  '/admin/bookings': typeof AdminBookingsRoute
-  '/admin/caregivers': typeof AdminCaregiversRoute
-  '/admin/complaints': typeof AdminComplaintsRoute
-  '/admin/reports': typeof AdminReportsRoute
-  '/admin/services': typeof AdminServicesRoute
-  '/admin/users': typeof AdminUsersRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/services': typeof ServicesRoute
   '/auth/access-denied': typeof AuthAccessDeniedRoute
   '/auth/account-review': typeof AuthAccountReviewRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
@@ -328,18 +384,28 @@ export interface FileRoutesById {
   '/auth/pending-verification': typeof AuthPendingVerificationRoute
   '/auth/register': typeof AuthRegisterRouteWithChildren
   '/auth/registration-success': typeof AuthRegistrationSuccessRoute
+  '/auth/verification-approved': typeof AuthVerificationApprovedRoute
+  '/auth/verification-rejected': typeof AuthVerificationRejectedRoute
+  '/caregiver/active-visits': typeof CaregiverActiveVisitsRoute
   '/caregiver/availability': typeof CaregiverAvailabilityRoute
+  '/caregiver/care-notes': typeof CaregiverCareNotesRoute
   '/caregiver/documents': typeof CaregiverDocumentsRoute
   '/caregiver/earnings': typeof CaregiverEarningsRoute
   '/caregiver/history': typeof CaregiverHistoryRoute
+  '/caregiver/notifications': typeof CaregiverNotificationsRoute
+  '/caregiver/patients': typeof CaregiverPatientsRoute
   '/caregiver/profile': typeof CaregiverProfileRoute
   '/caregiver/requests': typeof CaregiverRequestsRoute
+  '/caregiver/reviews': typeof CaregiverReviewsRoute
+  '/caregiver/services': typeof CaregiverServicesRoute
+  '/caregiver/settings': typeof CaregiverSettingsRoute
   '/dashboard/bookings': typeof DashboardBookingsRoute
   '/dashboard/history': typeof DashboardHistoryRoute
+  '/dashboard/notifications': typeof DashboardNotificationsRoute
   '/dashboard/patients': typeof DashboardPatientsRoute
   '/dashboard/profile': typeof DashboardProfileRoute
   '/dashboard/services': typeof DashboardServicesRoute
-  '/admin/': typeof AdminIndexRoute
+  '/dashboard/settings': typeof DashboardSettingsRoute
   '/caregiver/': typeof CaregiverIndexRoute
   '/dashboard/': typeof DashboardIndexRoute
   '/auth/register/caregiver': typeof AuthRegisterCaregiverRoute
@@ -352,16 +418,13 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/admin'
-    | '/admin-login'
+    | '/about'
     | '/caregiver'
+    | '/caregivers'
+    | '/contact'
     | '/dashboard'
-    | '/admin/bookings'
-    | '/admin/caregivers'
-    | '/admin/complaints'
-    | '/admin/reports'
-    | '/admin/services'
-    | '/admin/users'
+    | '/how-it-works'
+    | '/services'
     | '/auth/access-denied'
     | '/auth/account-review'
     | '/auth/forgot-password'
@@ -369,18 +432,28 @@ export interface FileRouteTypes {
     | '/auth/pending-verification'
     | '/auth/register'
     | '/auth/registration-success'
+    | '/auth/verification-approved'
+    | '/auth/verification-rejected'
+    | '/caregiver/active-visits'
     | '/caregiver/availability'
+    | '/caregiver/care-notes'
     | '/caregiver/documents'
     | '/caregiver/earnings'
     | '/caregiver/history'
+    | '/caregiver/notifications'
+    | '/caregiver/patients'
     | '/caregiver/profile'
     | '/caregiver/requests'
+    | '/caregiver/reviews'
+    | '/caregiver/services'
+    | '/caregiver/settings'
     | '/dashboard/bookings'
     | '/dashboard/history'
+    | '/dashboard/notifications'
     | '/dashboard/patients'
     | '/dashboard/profile'
     | '/dashboard/services'
-    | '/admin/'
+    | '/dashboard/settings'
     | '/caregiver/'
     | '/dashboard/'
     | '/auth/register/caregiver'
@@ -391,31 +464,39 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/admin-login'
-    | '/admin/bookings'
-    | '/admin/caregivers'
-    | '/admin/complaints'
-    | '/admin/reports'
-    | '/admin/services'
-    | '/admin/users'
+    | '/about'
+    | '/caregivers'
+    | '/contact'
+    | '/how-it-works'
+    | '/services'
     | '/auth/access-denied'
     | '/auth/account-review'
     | '/auth/forgot-password'
     | '/auth/login'
     | '/auth/pending-verification'
     | '/auth/registration-success'
+    | '/auth/verification-approved'
+    | '/auth/verification-rejected'
+    | '/caregiver/active-visits'
     | '/caregiver/availability'
+    | '/caregiver/care-notes'
     | '/caregiver/documents'
     | '/caregiver/earnings'
     | '/caregiver/history'
+    | '/caregiver/notifications'
+    | '/caregiver/patients'
     | '/caregiver/profile'
     | '/caregiver/requests'
+    | '/caregiver/reviews'
+    | '/caregiver/services'
+    | '/caregiver/settings'
     | '/dashboard/bookings'
     | '/dashboard/history'
+    | '/dashboard/notifications'
     | '/dashboard/patients'
     | '/dashboard/profile'
     | '/dashboard/services'
-    | '/admin'
+    | '/dashboard/settings'
     | '/caregiver'
     | '/dashboard'
     | '/auth/register/caregiver'
@@ -426,16 +507,13 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/admin'
-    | '/admin-login'
+    | '/about'
     | '/caregiver'
+    | '/caregivers'
+    | '/contact'
     | '/dashboard'
-    | '/admin/bookings'
-    | '/admin/caregivers'
-    | '/admin/complaints'
-    | '/admin/reports'
-    | '/admin/services'
-    | '/admin/users'
+    | '/how-it-works'
+    | '/services'
     | '/auth/access-denied'
     | '/auth/account-review'
     | '/auth/forgot-password'
@@ -443,18 +521,28 @@ export interface FileRouteTypes {
     | '/auth/pending-verification'
     | '/auth/register'
     | '/auth/registration-success'
+    | '/auth/verification-approved'
+    | '/auth/verification-rejected'
+    | '/caregiver/active-visits'
     | '/caregiver/availability'
+    | '/caregiver/care-notes'
     | '/caregiver/documents'
     | '/caregiver/earnings'
     | '/caregiver/history'
+    | '/caregiver/notifications'
+    | '/caregiver/patients'
     | '/caregiver/profile'
     | '/caregiver/requests'
+    | '/caregiver/reviews'
+    | '/caregiver/services'
+    | '/caregiver/settings'
     | '/dashboard/bookings'
     | '/dashboard/history'
+    | '/dashboard/notifications'
     | '/dashboard/patients'
     | '/dashboard/profile'
     | '/dashboard/services'
-    | '/admin/'
+    | '/dashboard/settings'
     | '/caregiver/'
     | '/dashboard/'
     | '/auth/register/caregiver'
@@ -466,10 +554,13 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AdminRoute: typeof AdminRouteWithChildren
-  AdminLoginRoute: typeof AdminLoginRoute
+  AboutRoute: typeof AboutRoute
   CaregiverRoute: typeof CaregiverRouteWithChildren
+  CaregiversRoute: typeof CaregiversRoute
+  ContactRoute: typeof ContactRoute
   DashboardRoute: typeof DashboardRouteWithChildren
+  HowItWorksRoute: typeof HowItWorksRoute
+  ServicesRoute: typeof ServicesRoute
   AuthAccessDeniedRoute: typeof AuthAccessDeniedRoute
   AuthAccountReviewRoute: typeof AuthAccountReviewRoute
   AuthForgotPasswordRoute: typeof AuthForgotPasswordRoute
@@ -477,15 +568,45 @@ export interface RootRouteChildren {
   AuthPendingVerificationRoute: typeof AuthPendingVerificationRoute
   AuthRegisterRoute: typeof AuthRegisterRouteWithChildren
   AuthRegistrationSuccessRoute: typeof AuthRegistrationSuccessRoute
+  AuthVerificationApprovedRoute: typeof AuthVerificationApprovedRoute
+  AuthVerificationRejectedRoute: typeof AuthVerificationRejectedRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/how-it-works': {
+      id: '/how-it-works'
+      path: '/how-it-works'
+      fullPath: '/how-it-works'
+      preLoaderRoute: typeof HowItWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dashboard': {
       id: '/dashboard'
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/caregivers': {
+      id: '/caregivers'
+      path: '/caregivers'
+      fullPath: '/caregivers'
+      preLoaderRoute: typeof CaregiversRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/caregiver': {
@@ -495,18 +616,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CaregiverRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/admin-login': {
-      id: '/admin-login'
-      path: '/admin-login'
-      fullPath: '/admin-login'
-      preLoaderRoute: typeof AdminLoginRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/admin': {
-      id: '/admin'
-      path: '/admin'
-      fullPath: '/admin'
-      preLoaderRoute: typeof AdminRouteImport
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -530,12 +644,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CaregiverIndexRouteImport
       parentRoute: typeof CaregiverRoute
     }
-    '/admin/': {
-      id: '/admin/'
-      path: '/'
-      fullPath: '/admin/'
-      preLoaderRoute: typeof AdminIndexRouteImport
-      parentRoute: typeof AdminRoute
+    '/dashboard/settings': {
+      id: '/dashboard/settings'
+      path: '/settings'
+      fullPath: '/dashboard/settings'
+      preLoaderRoute: typeof DashboardSettingsRouteImport
+      parentRoute: typeof DashboardRoute
     }
     '/dashboard/services': {
       id: '/dashboard/services'
@@ -558,6 +672,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardPatientsRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/dashboard/notifications': {
+      id: '/dashboard/notifications'
+      path: '/notifications'
+      fullPath: '/dashboard/notifications'
+      preLoaderRoute: typeof DashboardNotificationsRouteImport
+      parentRoute: typeof DashboardRoute
+    }
     '/dashboard/history': {
       id: '/dashboard/history'
       path: '/history'
@@ -572,6 +693,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardBookingsRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/caregiver/settings': {
+      id: '/caregiver/settings'
+      path: '/settings'
+      fullPath: '/caregiver/settings'
+      preLoaderRoute: typeof CaregiverSettingsRouteImport
+      parentRoute: typeof CaregiverRoute
+    }
+    '/caregiver/services': {
+      id: '/caregiver/services'
+      path: '/services'
+      fullPath: '/caregiver/services'
+      preLoaderRoute: typeof CaregiverServicesRouteImport
+      parentRoute: typeof CaregiverRoute
+    }
+    '/caregiver/reviews': {
+      id: '/caregiver/reviews'
+      path: '/reviews'
+      fullPath: '/caregiver/reviews'
+      preLoaderRoute: typeof CaregiverReviewsRouteImport
+      parentRoute: typeof CaregiverRoute
+    }
     '/caregiver/requests': {
       id: '/caregiver/requests'
       path: '/requests'
@@ -584,6 +726,20 @@ declare module '@tanstack/react-router' {
       path: '/profile'
       fullPath: '/caregiver/profile'
       preLoaderRoute: typeof CaregiverProfileRouteImport
+      parentRoute: typeof CaregiverRoute
+    }
+    '/caregiver/patients': {
+      id: '/caregiver/patients'
+      path: '/patients'
+      fullPath: '/caregiver/patients'
+      preLoaderRoute: typeof CaregiverPatientsRouteImport
+      parentRoute: typeof CaregiverRoute
+    }
+    '/caregiver/notifications': {
+      id: '/caregiver/notifications'
+      path: '/notifications'
+      fullPath: '/caregiver/notifications'
+      preLoaderRoute: typeof CaregiverNotificationsRouteImport
       parentRoute: typeof CaregiverRoute
     }
     '/caregiver/history': {
@@ -607,12 +763,40 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CaregiverDocumentsRouteImport
       parentRoute: typeof CaregiverRoute
     }
+    '/caregiver/care-notes': {
+      id: '/caregiver/care-notes'
+      path: '/care-notes'
+      fullPath: '/caregiver/care-notes'
+      preLoaderRoute: typeof CaregiverCareNotesRouteImport
+      parentRoute: typeof CaregiverRoute
+    }
     '/caregiver/availability': {
       id: '/caregiver/availability'
       path: '/availability'
       fullPath: '/caregiver/availability'
       preLoaderRoute: typeof CaregiverAvailabilityRouteImport
       parentRoute: typeof CaregiverRoute
+    }
+    '/caregiver/active-visits': {
+      id: '/caregiver/active-visits'
+      path: '/active-visits'
+      fullPath: '/caregiver/active-visits'
+      preLoaderRoute: typeof CaregiverActiveVisitsRouteImport
+      parentRoute: typeof CaregiverRoute
+    }
+    '/auth/verification-rejected': {
+      id: '/auth/verification-rejected'
+      path: '/auth/verification-rejected'
+      fullPath: '/auth/verification-rejected'
+      preLoaderRoute: typeof AuthVerificationRejectedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/verification-approved': {
+      id: '/auth/verification-approved'
+      path: '/auth/verification-approved'
+      fullPath: '/auth/verification-approved'
+      preLoaderRoute: typeof AuthVerificationApprovedRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/auth/registration-success': {
       id: '/auth/registration-success'
@@ -663,48 +847,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthAccessDeniedRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/admin/users': {
-      id: '/admin/users'
-      path: '/users'
-      fullPath: '/admin/users'
-      preLoaderRoute: typeof AdminUsersRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/services': {
-      id: '/admin/services'
-      path: '/services'
-      fullPath: '/admin/services'
-      preLoaderRoute: typeof AdminServicesRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/reports': {
-      id: '/admin/reports'
-      path: '/reports'
-      fullPath: '/admin/reports'
-      preLoaderRoute: typeof AdminReportsRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/complaints': {
-      id: '/admin/complaints'
-      path: '/complaints'
-      fullPath: '/admin/complaints'
-      preLoaderRoute: typeof AdminComplaintsRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/caregivers': {
-      id: '/admin/caregivers'
-      path: '/caregivers'
-      fullPath: '/admin/caregivers'
-      preLoaderRoute: typeof AdminCaregiversRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/bookings': {
-      id: '/admin/bookings'
-      path: '/bookings'
-      fullPath: '/admin/bookings'
-      preLoaderRoute: typeof AdminBookingsRouteImport
-      parentRoute: typeof AdminRoute
-    }
     '/dashboard/caregivers/': {
       id: '/dashboard/caregivers/'
       path: '/caregivers'
@@ -743,45 +885,37 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface AdminRouteChildren {
-  AdminBookingsRoute: typeof AdminBookingsRoute
-  AdminCaregiversRoute: typeof AdminCaregiversRoute
-  AdminComplaintsRoute: typeof AdminComplaintsRoute
-  AdminReportsRoute: typeof AdminReportsRoute
-  AdminServicesRoute: typeof AdminServicesRoute
-  AdminUsersRoute: typeof AdminUsersRoute
-  AdminIndexRoute: typeof AdminIndexRoute
-}
-
-const AdminRouteChildren: AdminRouteChildren = {
-  AdminBookingsRoute: AdminBookingsRoute,
-  AdminCaregiversRoute: AdminCaregiversRoute,
-  AdminComplaintsRoute: AdminComplaintsRoute,
-  AdminReportsRoute: AdminReportsRoute,
-  AdminServicesRoute: AdminServicesRoute,
-  AdminUsersRoute: AdminUsersRoute,
-  AdminIndexRoute: AdminIndexRoute,
-}
-
-const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
-
 interface CaregiverRouteChildren {
+  CaregiverActiveVisitsRoute: typeof CaregiverActiveVisitsRoute
   CaregiverAvailabilityRoute: typeof CaregiverAvailabilityRoute
+  CaregiverCareNotesRoute: typeof CaregiverCareNotesRoute
   CaregiverDocumentsRoute: typeof CaregiverDocumentsRoute
   CaregiverEarningsRoute: typeof CaregiverEarningsRoute
   CaregiverHistoryRoute: typeof CaregiverHistoryRoute
+  CaregiverNotificationsRoute: typeof CaregiverNotificationsRoute
+  CaregiverPatientsRoute: typeof CaregiverPatientsRoute
   CaregiverProfileRoute: typeof CaregiverProfileRoute
   CaregiverRequestsRoute: typeof CaregiverRequestsRoute
+  CaregiverReviewsRoute: typeof CaregiverReviewsRoute
+  CaregiverServicesRoute: typeof CaregiverServicesRoute
+  CaregiverSettingsRoute: typeof CaregiverSettingsRoute
   CaregiverIndexRoute: typeof CaregiverIndexRoute
 }
 
 const CaregiverRouteChildren: CaregiverRouteChildren = {
+  CaregiverActiveVisitsRoute: CaregiverActiveVisitsRoute,
   CaregiverAvailabilityRoute: CaregiverAvailabilityRoute,
+  CaregiverCareNotesRoute: CaregiverCareNotesRoute,
   CaregiverDocumentsRoute: CaregiverDocumentsRoute,
   CaregiverEarningsRoute: CaregiverEarningsRoute,
   CaregiverHistoryRoute: CaregiverHistoryRoute,
+  CaregiverNotificationsRoute: CaregiverNotificationsRoute,
+  CaregiverPatientsRoute: CaregiverPatientsRoute,
   CaregiverProfileRoute: CaregiverProfileRoute,
   CaregiverRequestsRoute: CaregiverRequestsRoute,
+  CaregiverReviewsRoute: CaregiverReviewsRoute,
+  CaregiverServicesRoute: CaregiverServicesRoute,
+  CaregiverSettingsRoute: CaregiverSettingsRoute,
   CaregiverIndexRoute: CaregiverIndexRoute,
 }
 
@@ -792,9 +926,11 @@ const CaregiverRouteWithChildren = CaregiverRoute._addFileChildren(
 interface DashboardRouteChildren {
   DashboardBookingsRoute: typeof DashboardBookingsRoute
   DashboardHistoryRoute: typeof DashboardHistoryRoute
+  DashboardNotificationsRoute: typeof DashboardNotificationsRoute
   DashboardPatientsRoute: typeof DashboardPatientsRoute
   DashboardProfileRoute: typeof DashboardProfileRoute
   DashboardServicesRoute: typeof DashboardServicesRoute
+  DashboardSettingsRoute: typeof DashboardSettingsRoute
   DashboardIndexRoute: typeof DashboardIndexRoute
   DashboardCaregiversIdRoute: typeof DashboardCaregiversIdRoute
   DashboardCaregiversIndexRoute: typeof DashboardCaregiversIndexRoute
@@ -803,9 +939,11 @@ interface DashboardRouteChildren {
 const DashboardRouteChildren: DashboardRouteChildren = {
   DashboardBookingsRoute: DashboardBookingsRoute,
   DashboardHistoryRoute: DashboardHistoryRoute,
+  DashboardNotificationsRoute: DashboardNotificationsRoute,
   DashboardPatientsRoute: DashboardPatientsRoute,
   DashboardProfileRoute: DashboardProfileRoute,
   DashboardServicesRoute: DashboardServicesRoute,
+  DashboardSettingsRoute: DashboardSettingsRoute,
   DashboardIndexRoute: DashboardIndexRoute,
   DashboardCaregiversIdRoute: DashboardCaregiversIdRoute,
   DashboardCaregiversIndexRoute: DashboardCaregiversIndexRoute,
@@ -833,10 +971,13 @@ const AuthRegisterRouteWithChildren = AuthRegisterRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AdminRoute: AdminRouteWithChildren,
-  AdminLoginRoute: AdminLoginRoute,
+  AboutRoute: AboutRoute,
   CaregiverRoute: CaregiverRouteWithChildren,
+  CaregiversRoute: CaregiversRoute,
+  ContactRoute: ContactRoute,
   DashboardRoute: DashboardRouteWithChildren,
+  HowItWorksRoute: HowItWorksRoute,
+  ServicesRoute: ServicesRoute,
   AuthAccessDeniedRoute: AuthAccessDeniedRoute,
   AuthAccountReviewRoute: AuthAccountReviewRoute,
   AuthForgotPasswordRoute: AuthForgotPasswordRoute,
@@ -844,6 +985,8 @@ const rootRouteChildren: RootRouteChildren = {
   AuthPendingVerificationRoute: AuthPendingVerificationRoute,
   AuthRegisterRoute: AuthRegisterRouteWithChildren,
   AuthRegistrationSuccessRoute: AuthRegistrationSuccessRoute,
+  AuthVerificationApprovedRoute: AuthVerificationApprovedRoute,
+  AuthVerificationRejectedRoute: AuthVerificationRejectedRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
