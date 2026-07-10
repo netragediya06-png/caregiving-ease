@@ -164,7 +164,7 @@ function Landing() {
       <section id="caregivers" className="container-page py-20 md:py-28">
         <div className="flex items-end justify-between gap-6">
           <SectionHeader className="max-w-xl text-left" align="left" eyebrow="Featured caregivers" title="Meet a few of our care professionals" desc="Every caregiver on SilverCare is background-verified and skill-assessed." />
-          <Button asChild variant="ghost" className="hidden md:inline-flex"><Link to="/dashboard/caregivers">See all <ArrowRight className="ml-1 h-4 w-4" /></Link></Button>
+          <Button asChild variant="ghost" className="hidden md:inline-flex"><Link to="/caregivers">See all <ArrowRight className="ml-1 h-4 w-4" /></Link></Button>
         </div>
         <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {caregivers.slice(0, 6).map((c) => (
@@ -275,7 +275,7 @@ function Landing() {
             <p className="mt-3 text-muted-foreground">Get matched with a verified caregiver in minutes. Hourly, daily, or long-term — you choose.</p>
             <div className="mt-7 flex flex-wrap gap-3">
               <Button asChild size="lg" className="rounded-full"><Link to="/auth/register/family">Get started free</Link></Button>
-              <Button asChild size="lg" variant="outline" className="rounded-full"><Link to="/dashboard/caregivers">Browse caregivers</Link></Button>
+              <Button asChild size="lg" variant="outline" className="rounded-full"><Link to="/caregivers">Browse caregivers</Link></Button>
             </div>
           </div>
         </div>
