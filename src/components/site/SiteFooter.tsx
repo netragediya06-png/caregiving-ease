@@ -17,22 +17,20 @@ export function SiteFooter() {
           </p>
         </div>
         <FooterCol title="Platform" links={[
-          { label: "Services", href: "/#services" },
-          { label: "Caregivers", href: "/#caregivers" },
-          { label: "How it works", href: "/#how" },
-          { label: "Pricing", href: "/#services" },
+          { label: "Services", href: "/services" },
+          { label: "Caregivers", href: "/caregivers" },
+          { label: "How it works", href: "/how-it-works" },
         ]} />
         <FooterCol title="For you" links={[
-          { label: "Sign in", href: "/auth/login" },
+          { label: "Login", href: "/auth/login" },
           { label: "Family signup", href: "/auth/register/family" },
           { label: "Become a caregiver", href: "/auth/register/caregiver" },
-          { label: "Admin", href: "/admin" },
         ]} />
         <FooterCol title="Company" links={[
-          { label: "About", href: "#" },
-          { label: "Trust & safety", href: "#" },
-          { label: "Careers", href: "#" },
-          { label: "Contact", href: "#" },
+          { label: "About", href: "/about" },
+          { label: "Contact", href: "/contact" },
+          { label: "Trust & safety", href: "/about" },
+          { label: "Careers", href: "/about" },
         ]} />
       </div>
       <div className="border-t border-border">
