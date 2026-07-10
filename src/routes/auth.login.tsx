@@ -43,11 +43,6 @@ function Login() {
             Create an account
           </Link>
         </p>
-        <p className="text-center text-xs text-muted-foreground">
-          <Link to="/admin-login" className="inline-flex items-center gap-1 hover:text-primary hover:underline">
-            <ShieldCheck className="h-3 w-3" /> Admin sign in
-          </Link>
-        </p>
       </form>
     </AuthShell>
   );
