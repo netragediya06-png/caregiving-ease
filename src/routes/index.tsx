@@ -47,7 +47,7 @@ function Landing() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg" className="rounded-full">
-                <Link to="/dashboard/caregivers">Find a caregiver <ArrowRight className="ml-1 h-4 w-4" /></Link>
+                <Link to="/caregivers">Find a caregiver <ArrowRight className="ml-1 h-4 w-4" /></Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-full">
                 <Link to="/auth/register/caregiver">Join as a caregiver</Link>
