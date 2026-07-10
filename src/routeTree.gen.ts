@@ -9,8 +9,13 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as HowItWorksRouteImport } from './routes/how-it-works'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CaregiversRouteImport } from './routes/caregivers'
 import { Route as CaregiverRouteImport } from './routes/caregiver'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
 import { Route as CaregiverIndexRouteImport } from './routes/caregiver.index'
@@ -25,6 +30,8 @@ import { Route as CaregiverHistoryRouteImport } from './routes/caregiver.history
 import { Route as CaregiverEarningsRouteImport } from './routes/caregiver.earnings'
 import { Route as CaregiverDocumentsRouteImport } from './routes/caregiver.documents'
 import { Route as CaregiverAvailabilityRouteImport } from './routes/caregiver.availability'
+import { Route as AuthVerificationRejectedRouteImport } from './routes/auth.verification-rejected'
+import { Route as AuthVerificationApprovedRouteImport } from './routes/auth.verification-approved'
 import { Route as AuthRegistrationSuccessRouteImport } from './routes/auth.registration-success'
 import { Route as AuthRegisterRouteImport } from './routes/auth.register'
 import { Route as AuthPendingVerificationRouteImport } from './routes/auth.pending-verification'
@@ -38,14 +45,39 @@ import { Route as DashboardCaregiversIdRouteImport } from './routes/dashboard.ca
 import { Route as AuthRegisterFamilyRouteImport } from './routes/auth.register.family'
 import { Route as AuthRegisterCaregiverRouteImport } from './routes/auth.register.caregiver'
 
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HowItWorksRoute = HowItWorksRouteImport.update({
+  id: '/how-it-works',
+  path: '/how-it-works',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CaregiversRoute = CaregiversRouteImport.update({
+  id: '/caregivers',
+  path: '/caregivers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CaregiverRoute = CaregiverRouteImport.update({
   id: '/caregiver',
   path: '/caregiver',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -118,6 +150,18 @@ const CaregiverAvailabilityRoute = CaregiverAvailabilityRouteImport.update({
   path: '/availability',
   getParentRoute: () => CaregiverRoute,
 } as any)
+const AuthVerificationRejectedRoute =
+  AuthVerificationRejectedRouteImport.update({
+    id: '/auth/verification-rejected',
+    path: '/auth/verification-rejected',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AuthVerificationApprovedRoute =
+  AuthVerificationApprovedRouteImport.update({
+    id: '/auth/verification-approved',
+    path: '/auth/verification-approved',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const AuthRegistrationSuccessRoute = AuthRegistrationSuccessRouteImport.update({
   id: '/auth/registration-success',
   path: '/auth/registration-success',
@@ -182,8 +226,13 @@ const AuthRegisterCaregiverRoute = AuthRegisterCaregiverRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/caregiver': typeof CaregiverRouteWithChildren
+  '/caregivers': typeof CaregiversRoute
+  '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRouteWithChildren
+  '/how-it-works': typeof HowItWorksRoute
+  '/services': typeof ServicesRoute
   '/auth/access-denied': typeof AuthAccessDeniedRoute
   '/auth/account-review': typeof AuthAccountReviewRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
@@ -191,6 +240,8 @@ export interface FileRoutesByFullPath {
   '/auth/pending-verification': typeof AuthPendingVerificationRoute
   '/auth/register': typeof AuthRegisterRouteWithChildren
   '/auth/registration-success': typeof AuthRegistrationSuccessRoute
+  '/auth/verification-approved': typeof AuthVerificationApprovedRoute
+  '/auth/verification-rejected': typeof AuthVerificationRejectedRoute
   '/caregiver/availability': typeof CaregiverAvailabilityRoute
   '/caregiver/documents': typeof CaregiverDocumentsRoute
   '/caregiver/earnings': typeof CaregiverEarningsRoute
@@ -212,12 +263,19 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/caregivers': typeof CaregiversRoute
+  '/contact': typeof ContactRoute
+  '/how-it-works': typeof HowItWorksRoute
+  '/services': typeof ServicesRoute
   '/auth/access-denied': typeof AuthAccessDeniedRoute
   '/auth/account-review': typeof AuthAccountReviewRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/pending-verification': typeof AuthPendingVerificationRoute
   '/auth/registration-success': typeof AuthRegistrationSuccessRoute
+  '/auth/verification-approved': typeof AuthVerificationApprovedRoute
+  '/auth/verification-rejected': typeof AuthVerificationRejectedRoute
   '/caregiver/availability': typeof CaregiverAvailabilityRoute
   '/caregiver/documents': typeof CaregiverDocumentsRoute
   '/caregiver/earnings': typeof CaregiverEarningsRoute
@@ -240,8 +298,13 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/caregiver': typeof CaregiverRouteWithChildren
+  '/caregivers': typeof CaregiversRoute
+  '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRouteWithChildren
+  '/how-it-works': typeof HowItWorksRoute
+  '/services': typeof ServicesRoute
   '/auth/access-denied': typeof AuthAccessDeniedRoute
   '/auth/account-review': typeof AuthAccountReviewRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
@@ -249,6 +312,8 @@ export interface FileRoutesById {
   '/auth/pending-verification': typeof AuthPendingVerificationRoute
   '/auth/register': typeof AuthRegisterRouteWithChildren
   '/auth/registration-success': typeof AuthRegistrationSuccessRoute
+  '/auth/verification-approved': typeof AuthVerificationApprovedRoute
+  '/auth/verification-rejected': typeof AuthVerificationRejectedRoute
   '/caregiver/availability': typeof CaregiverAvailabilityRoute
   '/caregiver/documents': typeof CaregiverDocumentsRoute
   '/caregiver/earnings': typeof CaregiverEarningsRoute
@@ -272,8 +337,13 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/caregiver'
+    | '/caregivers'
+    | '/contact'
     | '/dashboard'
+    | '/how-it-works'
+    | '/services'
     | '/auth/access-denied'
     | '/auth/account-review'
     | '/auth/forgot-password'
@@ -281,6 +351,8 @@ export interface FileRouteTypes {
     | '/auth/pending-verification'
     | '/auth/register'
     | '/auth/registration-success'
+    | '/auth/verification-approved'
+    | '/auth/verification-rejected'
     | '/caregiver/availability'
     | '/caregiver/documents'
     | '/caregiver/earnings'
@@ -302,12 +374,19 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
+    | '/caregivers'
+    | '/contact'
+    | '/how-it-works'
+    | '/services'
     | '/auth/access-denied'
     | '/auth/account-review'
     | '/auth/forgot-password'
     | '/auth/login'
     | '/auth/pending-verification'
     | '/auth/registration-success'
+    | '/auth/verification-approved'
+    | '/auth/verification-rejected'
     | '/caregiver/availability'
     | '/caregiver/documents'
     | '/caregiver/earnings'
@@ -329,8 +408,13 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/caregiver'
+    | '/caregivers'
+    | '/contact'
     | '/dashboard'
+    | '/how-it-works'
+    | '/services'
     | '/auth/access-denied'
     | '/auth/account-review'
     | '/auth/forgot-password'
@@ -338,6 +422,8 @@ export interface FileRouteTypes {
     | '/auth/pending-verification'
     | '/auth/register'
     | '/auth/registration-success'
+    | '/auth/verification-approved'
+    | '/auth/verification-rejected'
     | '/caregiver/availability'
     | '/caregiver/documents'
     | '/caregiver/earnings'
@@ -360,8 +446,13 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   CaregiverRoute: typeof CaregiverRouteWithChildren
+  CaregiversRoute: typeof CaregiversRoute
+  ContactRoute: typeof ContactRoute
   DashboardRoute: typeof DashboardRouteWithChildren
+  HowItWorksRoute: typeof HowItWorksRoute
+  ServicesRoute: typeof ServicesRoute
   AuthAccessDeniedRoute: typeof AuthAccessDeniedRoute
   AuthAccountReviewRoute: typeof AuthAccountReviewRoute
   AuthForgotPasswordRoute: typeof AuthForgotPasswordRoute
@@ -369,10 +460,26 @@ export interface RootRouteChildren {
   AuthPendingVerificationRoute: typeof AuthPendingVerificationRoute
   AuthRegisterRoute: typeof AuthRegisterRouteWithChildren
   AuthRegistrationSuccessRoute: typeof AuthRegistrationSuccessRoute
+  AuthVerificationApprovedRoute: typeof AuthVerificationApprovedRoute
+  AuthVerificationRejectedRoute: typeof AuthVerificationRejectedRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/how-it-works': {
+      id: '/how-it-works'
+      path: '/how-it-works'
+      fullPath: '/how-it-works'
+      preLoaderRoute: typeof HowItWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dashboard': {
       id: '/dashboard'
       path: '/dashboard'
@@ -380,11 +487,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/caregivers': {
+      id: '/caregivers'
+      path: '/caregivers'
+      fullPath: '/caregivers'
+      preLoaderRoute: typeof CaregiversRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/caregiver': {
       id: '/caregiver'
       path: '/caregiver'
       fullPath: '/caregiver'
       preLoaderRoute: typeof CaregiverRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -484,6 +612,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/caregiver/availability'
       preLoaderRoute: typeof CaregiverAvailabilityRouteImport
       parentRoute: typeof CaregiverRoute
+    }
+    '/auth/verification-rejected': {
+      id: '/auth/verification-rejected'
+      path: '/auth/verification-rejected'
+      fullPath: '/auth/verification-rejected'
+      preLoaderRoute: typeof AuthVerificationRejectedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/verification-approved': {
+      id: '/auth/verification-approved'
+      path: '/auth/verification-approved'
+      fullPath: '/auth/verification-approved'
+      preLoaderRoute: typeof AuthVerificationApprovedRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/auth/registration-success': {
       id: '/auth/registration-success'
@@ -640,8 +782,13 @@ const AuthRegisterRouteWithChildren = AuthRegisterRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   CaregiverRoute: CaregiverRouteWithChildren,
+  CaregiversRoute: CaregiversRoute,
+  ContactRoute: ContactRoute,
   DashboardRoute: DashboardRouteWithChildren,
+  HowItWorksRoute: HowItWorksRoute,
+  ServicesRoute: ServicesRoute,
   AuthAccessDeniedRoute: AuthAccessDeniedRoute,
   AuthAccountReviewRoute: AuthAccountReviewRoute,
   AuthForgotPasswordRoute: AuthForgotPasswordRoute,
@@ -649,6 +796,8 @@ const rootRouteChildren: RootRouteChildren = {
   AuthPendingVerificationRoute: AuthPendingVerificationRoute,
   AuthRegisterRoute: AuthRegisterRouteWithChildren,
   AuthRegistrationSuccessRoute: AuthRegistrationSuccessRoute,
+  AuthVerificationApprovedRoute: AuthVerificationApprovedRoute,
+  AuthVerificationRejectedRoute: AuthVerificationRejectedRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
