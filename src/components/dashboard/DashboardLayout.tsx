@@ -10,42 +10,41 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
-type Role = "user" | "caregiver" | "admin";
+type Role = "user" | "caregiver";
 
 const navByRole: Record<Role, { to: string; label: string; icon: any }[]> = {
   user: [
     { to: "/dashboard", label: "Overview", icon: LayoutDashboard },
     { to: "/dashboard/profile", label: "My profile", icon: User },
-    { to: "/dashboard/patients", label: "Patients", icon: Users },
-    { to: "/dashboard/services", label: "Services", icon: Stethoscope },
+    { to: "/dashboard/patients", label: "Patient profiles", icon: Users },
     { to: "/dashboard/caregivers", label: "Find caregivers", icon: Search },
-    { to: "/dashboard/bookings", label: "Bookings", icon: CalendarCheck },
-    { to: "/dashboard/history", label: "History", icon: History },
+    { to: "/dashboard/services", label: "Services", icon: Stethoscope },
+    { to: "/dashboard/bookings", label: "My bookings", icon: CalendarCheck },
+    { to: "/dashboard/history", label: "Booking history", icon: History },
+    { to: "/dashboard/notifications", label: "Notifications", icon: Bell },
+    { to: "/dashboard/settings", label: "Settings", icon: Settings },
   ],
   caregiver: [
-    { to: "/caregiver", label: "Overview", icon: LayoutDashboard },
-    { to: "/caregiver/profile", label: "Profile", icon: User },
-    { to: "/caregiver/documents", label: "Documents", icon: FilePlus },
+    { to: "/caregiver", label: "Dashboard", icon: LayoutDashboard },
+    { to: "/caregiver/profile", label: "My profile", icon: User },
     { to: "/caregiver/availability", label: "Availability", icon: CalendarCheck },
-    { to: "/caregiver/requests", label: "Requests", icon: ClipboardList },
-    { to: "/caregiver/history", label: "Work history", icon: History },
+    { to: "/caregiver/services", label: "My services", icon: Stethoscope },
+    { to: "/caregiver/requests", label: "Booking requests", icon: ClipboardList },
+    { to: "/caregiver/active-visits", label: "Active visits", icon: Briefcase },
+    { to: "/caregiver/care-notes", label: "Care notes", icon: FileText },
+    { to: "/caregiver/patients", label: "Assigned patients", icon: UserCog },
+    { to: "/caregiver/reviews", label: "Reviews", icon: MessageSquare },
     { to: "/caregiver/earnings", label: "Earnings", icon: Wallet },
-  ],
-  admin: [
-    { to: "/admin", label: "Overview", icon: LayoutDashboard },
-    { to: "/admin/caregivers", label: "Verifications", icon: ShieldCheck },
-    { to: "/admin/users", label: "Users", icon: Users },
-    { to: "/admin/services", label: "Services", icon: Briefcase },
-    { to: "/admin/bookings", label: "Bookings", icon: CalendarCheck },
-    { to: "/admin/complaints", label: "Complaints", icon: MessageSquare },
-    { to: "/admin/reports", label: "Reports", icon: BarChart3 },
+    { to: "/caregiver/documents", label: "Documents", icon: FilePlus },
+    { to: "/caregiver/history", label: "Work history", icon: History },
+    { to: "/caregiver/notifications", label: "Notifications", icon: Bell },
+    { to: "/caregiver/settings", label: "Settings", icon: Settings },
   ],
 };
 
 const roleMeta: Record<Role, { name: string; sub: string; initials: string; badge: string }> = {
   user: { name: "Anjali Rao", sub: "Family account", initials: "AR", badge: "Family" },
   caregiver: { name: "Anita Sharma", sub: "Registered Nurse", initials: "AS", badge: "Caregiver" },
-  admin: { name: "Vikram Iyer", sub: "Platform admin", initials: "VI", badge: "Admin" },
 };
 
 export function DashboardLayout({ role, children }: { role: Role; children: ReactNode }) {
