@@ -42,6 +42,7 @@ import { Route as AdminComplaintsRouteImport } from './routes/admin.complaints'
 import { Route as AdminCaregiversRouteImport } from './routes/admin.caregivers'
 import { Route as AdminBookingsRouteImport } from './routes/admin.bookings'
 import { Route as DashboardCaregiversIndexRouteImport } from './routes/dashboard.caregivers.index'
+import { Route as AuthRegisterIndexRouteImport } from './routes/auth.register.index'
 import { Route as DashboardCaregiversIdRouteImport } from './routes/dashboard.caregivers.$id'
 import { Route as AuthRegisterFamilyRouteImport } from './routes/auth.register.family'
 import { Route as AuthRegisterCaregiverRouteImport } from './routes/auth.register.caregiver'
@@ -212,6 +213,11 @@ const DashboardCaregiversIndexRoute =
     path: '/caregivers/',
     getParentRoute: () => DashboardRoute,
   } as any)
+const AuthRegisterIndexRoute = AuthRegisterIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthRegisterRoute,
+} as any)
 const DashboardCaregiversIdRoute = DashboardCaregiversIdRouteImport.update({
   id: '/caregivers/$id',
   path: '/caregivers/$id',
@@ -264,6 +270,7 @@ export interface FileRoutesByFullPath {
   '/auth/register/caregiver': typeof AuthRegisterCaregiverRoute
   '/auth/register/family': typeof AuthRegisterFamilyRoute
   '/dashboard/caregivers/$id': typeof DashboardCaregiversIdRoute
+  '/auth/register/': typeof AuthRegisterIndexRoute
   '/dashboard/caregivers/': typeof DashboardCaregiversIndexRoute
 }
 export interface FileRoutesByTo {
@@ -280,7 +287,6 @@ export interface FileRoutesByTo {
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
   '/auth/login': typeof AuthLoginRoute
   '/auth/pending-verification': typeof AuthPendingVerificationRoute
-  '/auth/register': typeof AuthRegisterRouteWithChildren
   '/auth/registration-success': typeof AuthRegistrationSuccessRoute
   '/caregiver/availability': typeof CaregiverAvailabilityRoute
   '/caregiver/documents': typeof CaregiverDocumentsRoute
@@ -299,6 +305,7 @@ export interface FileRoutesByTo {
   '/auth/register/caregiver': typeof AuthRegisterCaregiverRoute
   '/auth/register/family': typeof AuthRegisterFamilyRoute
   '/dashboard/caregivers/$id': typeof DashboardCaregiversIdRoute
+  '/auth/register': typeof AuthRegisterIndexRoute
   '/dashboard/caregivers': typeof DashboardCaregiversIndexRoute
 }
 export interface FileRoutesById {
@@ -338,6 +345,7 @@ export interface FileRoutesById {
   '/auth/register/caregiver': typeof AuthRegisterCaregiverRoute
   '/auth/register/family': typeof AuthRegisterFamilyRoute
   '/dashboard/caregivers/$id': typeof DashboardCaregiversIdRoute
+  '/auth/register/': typeof AuthRegisterIndexRoute
   '/dashboard/caregivers/': typeof DashboardCaregiversIndexRoute
 }
 export interface FileRouteTypes {
@@ -378,6 +386,7 @@ export interface FileRouteTypes {
     | '/auth/register/caregiver'
     | '/auth/register/family'
     | '/dashboard/caregivers/$id'
+    | '/auth/register/'
     | '/dashboard/caregivers/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -394,7 +403,6 @@ export interface FileRouteTypes {
     | '/auth/forgot-password'
     | '/auth/login'
     | '/auth/pending-verification'
-    | '/auth/register'
     | '/auth/registration-success'
     | '/caregiver/availability'
     | '/caregiver/documents'
@@ -413,6 +421,7 @@ export interface FileRouteTypes {
     | '/auth/register/caregiver'
     | '/auth/register/family'
     | '/dashboard/caregivers/$id'
+    | '/auth/register'
     | '/dashboard/caregivers'
   id:
     | '__root__'
@@ -451,6 +460,7 @@ export interface FileRouteTypes {
     | '/auth/register/caregiver'
     | '/auth/register/family'
     | '/dashboard/caregivers/$id'
+    | '/auth/register/'
     | '/dashboard/caregivers/'
   fileRoutesById: FileRoutesById
 }
@@ -702,6 +712,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardCaregiversIndexRouteImport
       parentRoute: typeof DashboardRoute
     }
+    '/auth/register/': {
+      id: '/auth/register/'
+      path: '/'
+      fullPath: '/auth/register/'
+      preLoaderRoute: typeof AuthRegisterIndexRouteImport
+      parentRoute: typeof AuthRegisterRoute
+    }
     '/dashboard/caregivers/$id': {
       id: '/dashboard/caregivers/$id'
       path: '/caregivers/$id'
@@ -801,11 +818,13 @@ const DashboardRouteWithChildren = DashboardRoute._addFileChildren(
 interface AuthRegisterRouteChildren {
   AuthRegisterCaregiverRoute: typeof AuthRegisterCaregiverRoute
   AuthRegisterFamilyRoute: typeof AuthRegisterFamilyRoute
+  AuthRegisterIndexRoute: typeof AuthRegisterIndexRoute
 }
 
 const AuthRegisterRouteChildren: AuthRegisterRouteChildren = {
   AuthRegisterCaregiverRoute: AuthRegisterCaregiverRoute,
   AuthRegisterFamilyRoute: AuthRegisterFamilyRoute,
+  AuthRegisterIndexRoute: AuthRegisterIndexRoute,
 }
 
 const AuthRegisterRouteWithChildren = AuthRegisterRoute._addFileChildren(
