@@ -10,6 +10,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { caregivers, services, testimonials, faqs, stats } from "@/lib/mock-data";
+import { LocationSearch } from "@/components/site/LocationSearch";
 import heroCare from "@/assets/hero-care.jpg";
 import carePhysio from "@/assets/care-physio.jpg";
 
@@ -53,7 +54,8 @@ function Landing() {
                 <Link to="/auth/register/caregiver">Join as a caregiver</Link>
               </Button>
             </div>
-            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-muted-foreground">
+            <div className="mt-8"><LocationSearch /></div>
+            <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-muted-foreground">
               <span className="inline-flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-primary" /> Background-verified</span>
               <span className="inline-flex items-center gap-2"><Clock className="h-4 w-4 text-primary" /> Visits in under 2 hrs</span>
               <span className="inline-flex items-center gap-2"><Wallet className="h-4 w-4 text-primary" /> Transparent pricing</span>
