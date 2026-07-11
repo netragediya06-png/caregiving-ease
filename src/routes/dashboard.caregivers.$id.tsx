@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageHeader } from "@/components/dashboard/DashboardLayout";
-import { caregivers, sampleReviews } from "@/lib/mock-data";
+import { caregivers, sampleReviews, type Caregiver } from "@/lib/mock-data";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -24,7 +24,7 @@ export const Route = createFileRoute("/dashboard/caregivers/$id")({
 });
 
 function Detail() {
-  const c = Route.useLoaderData();
+  const c = Route.useLoaderData() as Caregiver;
   const similar = caregivers.filter((x) => x.id !== c.id && (x.role === c.role || x.city === c.city)).slice(0, 3);
 
   return (
