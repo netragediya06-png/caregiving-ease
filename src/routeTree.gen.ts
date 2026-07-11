@@ -9,8 +9,11 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SupportRouteImport } from './routes/support'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as HowItWorksRouteImport } from './routes/how-it-works'
+import { Route as HelpRouteImport } from './routes/help'
+import { Route as FaqRouteImport } from './routes/faq'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CaregiversRouteImport } from './routes/caregivers'
@@ -54,6 +57,11 @@ import { Route as DashboardCaregiversIdRouteImport } from './routes/dashboard.ca
 import { Route as AuthRegisterFamilyRouteImport } from './routes/auth.register.family'
 import { Route as AuthRegisterCaregiverRouteImport } from './routes/auth.register.caregiver'
 
+const SupportRoute = SupportRouteImport.update({
+  id: '/support',
+  path: '/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
@@ -62,6 +70,16 @@ const ServicesRoute = ServicesRouteImport.update({
 const HowItWorksRoute = HowItWorksRouteImport.update({
   id: '/how-it-works',
   path: '/how-it-works',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HelpRoute = HelpRouteImport.update({
+  id: '/help',
+  path: '/help',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardRoute = DashboardRouteImport.update({
@@ -285,8 +303,11 @@ export interface FileRoutesByFullPath {
   '/caregivers': typeof CaregiversRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRouteWithChildren
+  '/faq': typeof FaqRoute
+  '/help': typeof HelpRoute
   '/how-it-works': typeof HowItWorksRoute
   '/services': typeof ServicesRoute
+  '/support': typeof SupportRoute
   '/auth/access-denied': typeof AuthAccessDeniedRoute
   '/auth/account-review': typeof AuthAccountReviewRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
@@ -329,8 +350,11 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/caregivers': typeof CaregiversRoute
   '/contact': typeof ContactRoute
+  '/faq': typeof FaqRoute
+  '/help': typeof HelpRoute
   '/how-it-works': typeof HowItWorksRoute
   '/services': typeof ServicesRoute
+  '/support': typeof SupportRoute
   '/auth/access-denied': typeof AuthAccessDeniedRoute
   '/auth/account-review': typeof AuthAccountReviewRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
@@ -375,8 +399,11 @@ export interface FileRoutesById {
   '/caregivers': typeof CaregiversRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRouteWithChildren
+  '/faq': typeof FaqRoute
+  '/help': typeof HelpRoute
   '/how-it-works': typeof HowItWorksRoute
   '/services': typeof ServicesRoute
+  '/support': typeof SupportRoute
   '/auth/access-denied': typeof AuthAccessDeniedRoute
   '/auth/account-review': typeof AuthAccountReviewRoute
   '/auth/forgot-password': typeof AuthForgotPasswordRoute
@@ -423,8 +450,11 @@ export interface FileRouteTypes {
     | '/caregivers'
     | '/contact'
     | '/dashboard'
+    | '/faq'
+    | '/help'
     | '/how-it-works'
     | '/services'
+    | '/support'
     | '/auth/access-denied'
     | '/auth/account-review'
     | '/auth/forgot-password'
@@ -467,8 +497,11 @@ export interface FileRouteTypes {
     | '/about'
     | '/caregivers'
     | '/contact'
+    | '/faq'
+    | '/help'
     | '/how-it-works'
     | '/services'
+    | '/support'
     | '/auth/access-denied'
     | '/auth/account-review'
     | '/auth/forgot-password'
@@ -512,8 +545,11 @@ export interface FileRouteTypes {
     | '/caregivers'
     | '/contact'
     | '/dashboard'
+    | '/faq'
+    | '/help'
     | '/how-it-works'
     | '/services'
+    | '/support'
     | '/auth/access-denied'
     | '/auth/account-review'
     | '/auth/forgot-password'
@@ -559,8 +595,11 @@ export interface RootRouteChildren {
   CaregiversRoute: typeof CaregiversRoute
   ContactRoute: typeof ContactRoute
   DashboardRoute: typeof DashboardRouteWithChildren
+  FaqRoute: typeof FaqRoute
+  HelpRoute: typeof HelpRoute
   HowItWorksRoute: typeof HowItWorksRoute
   ServicesRoute: typeof ServicesRoute
+  SupportRoute: typeof SupportRoute
   AuthAccessDeniedRoute: typeof AuthAccessDeniedRoute
   AuthAccountReviewRoute: typeof AuthAccountReviewRoute
   AuthForgotPasswordRoute: typeof AuthForgotPasswordRoute
@@ -574,6 +613,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/support': {
+      id: '/support'
+      path: '/support'
+      fullPath: '/support'
+      preLoaderRoute: typeof SupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services': {
       id: '/services'
       path: '/services'
@@ -586,6 +632,20 @@ declare module '@tanstack/react-router' {
       path: '/how-it-works'
       fullPath: '/how-it-works'
       preLoaderRoute: typeof HowItWorksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/help': {
+      id: '/help'
+      path: '/help'
+      fullPath: '/help'
+      preLoaderRoute: typeof HelpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard': {
@@ -976,8 +1036,11 @@ const rootRouteChildren: RootRouteChildren = {
   CaregiversRoute: CaregiversRoute,
   ContactRoute: ContactRoute,
   DashboardRoute: DashboardRouteWithChildren,
+  FaqRoute: FaqRoute,
+  HelpRoute: HelpRoute,
   HowItWorksRoute: HowItWorksRoute,
   ServicesRoute: ServicesRoute,
+  SupportRoute: SupportRoute,
   AuthAccessDeniedRoute: AuthAccessDeniedRoute,
   AuthAccountReviewRoute: AuthAccountReviewRoute,
   AuthForgotPasswordRoute: AuthForgotPasswordRoute,
