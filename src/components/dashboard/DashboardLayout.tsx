@@ -2,8 +2,9 @@ import { ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import {
   HeartPulse, LayoutDashboard, User, Users, CalendarCheck, Stethoscope,
-  History, Wallet, FileText, Settings, LogOut, Bell, Search, ShieldCheck,
-  ClipboardList, MessageSquare, BarChart3, UserCog, Briefcase, FilePlus,
+  History, Wallet, FileText, Settings, LogOut, Bell, Search,
+  ClipboardList, MessageSquare, UserCog, Briefcase, FilePlus,
+  Heart, Clock3, LifeBuoy, PhoneCall,
 } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
@@ -18,10 +19,14 @@ const navByRole: Record<Role, { to: string; label: string; icon: any }[]> = {
     { to: "/dashboard/profile", label: "My profile", icon: User },
     { to: "/dashboard/patients", label: "Patient profiles", icon: Users },
     { to: "/dashboard/caregivers", label: "Find caregivers", icon: Search },
+    { to: "/dashboard/saved", label: "Saved caregivers", icon: Heart },
+    { to: "/dashboard/recent", label: "Recently viewed", icon: Clock3 },
     { to: "/dashboard/services", label: "Services", icon: Stethoscope },
     { to: "/dashboard/bookings", label: "My bookings", icon: CalendarCheck },
     { to: "/dashboard/history", label: "Booking history", icon: History },
+    { to: "/dashboard/messages", label: "Messages", icon: MessageSquare },
     { to: "/dashboard/notifications", label: "Notifications", icon: Bell },
+    { to: "/dashboard/support", label: "Support", icon: LifeBuoy },
     { to: "/dashboard/settings", label: "Settings", icon: Settings },
   ],
   caregiver: [
@@ -31,6 +36,9 @@ const navByRole: Record<Role, { to: string; label: string; icon: any }[]> = {
     { to: "/caregiver/services", label: "My services", icon: Stethoscope },
     { to: "/caregiver/requests", label: "Booking requests", icon: ClipboardList },
     { to: "/caregiver/active-visits", label: "Active visits", icon: Briefcase },
+    { to: "/caregiver/inquiries", label: "Customer inquiries", icon: MessageSquare },
+    { to: "/caregiver/callbacks", label: "Callback requests", icon: PhoneCall },
+    { to: "/caregiver/messages", label: "Messages", icon: MessageSquare },
     { to: "/caregiver/care-notes", label: "Care notes", icon: FileText },
     { to: "/caregiver/patients", label: "Assigned patients", icon: UserCog },
     { to: "/caregiver/reviews", label: "Reviews", icon: MessageSquare },
