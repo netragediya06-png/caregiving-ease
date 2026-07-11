@@ -7,6 +7,7 @@ const navLinks = [
   { to: "/services", label: "Services" },
   { to: "/caregivers", label: "Caregivers" },
   { to: "/how-it-works", label: "How it works" },
+  { to: "/help", label: "Help" },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
 ] as const;
@@ -23,7 +24,7 @@ export function SiteNavbar() {
           <span className="font-display text-xl font-semibold tracking-tight">SilverCare</span>
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex">
+        <nav className="hidden items-center gap-6 md:flex">
           {navLinks.map((l) => (
             <Link
               key={l.to}
