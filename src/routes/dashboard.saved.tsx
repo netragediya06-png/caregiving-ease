@@ -53,3 +53,5 @@ function EmptyState() {
     </div>
   );
 }
+
+export default Saved;

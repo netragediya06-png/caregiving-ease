@@ -69,3 +69,5 @@ function CaregiversPublic() {
     </div>
   );
 }
+
+export default CaregiversPublic;

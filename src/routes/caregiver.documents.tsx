@@ -46,3 +46,5 @@ function Docs() {
     </div>
   );
 }
+
+export default Docs;

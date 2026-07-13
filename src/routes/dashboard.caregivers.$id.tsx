@@ -200,3 +200,5 @@ function Section({ title, children, icon: Icon }: { title: string; children: any
 function Row({ k, v }: { k: string; v: string }) {
   return <div className="flex items-center justify-between text-sm"><span className="text-muted-foreground">{k}</span><span className="font-medium">{v}</span></div>;
 }
+
+export default Detail;

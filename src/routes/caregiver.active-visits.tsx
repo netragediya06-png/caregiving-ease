@@ -46,3 +46,5 @@ function ActiveVisits() {
     </div>
   );
 }
+
+export default ActiveVisits;

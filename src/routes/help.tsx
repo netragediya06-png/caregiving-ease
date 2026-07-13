@@ -72,3 +72,5 @@ function HelpCenter() {
     </div>
   );
 }
+
+export default HelpCenter;

@@ -39,3 +39,5 @@ function Callbacks() {
     </div>
   );
 }
+
+export default Callbacks;

@@ -15,3 +15,5 @@ function Rejected() {
     />
   );
 }
+
+export default Rejected;

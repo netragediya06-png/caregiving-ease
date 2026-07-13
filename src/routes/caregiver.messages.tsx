@@ -14,3 +14,5 @@ function CgMessagesLayout() {
     </div>
   );
 }
+
+export default CgMessagesLayout;

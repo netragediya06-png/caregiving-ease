@@ -54,3 +54,5 @@ function CgSettings() {
     </div>
   );
 }
+
+export default CgSettings;

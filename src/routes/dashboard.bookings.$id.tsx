@@ -173,3 +173,5 @@ function BookingDetail() {
     </div>
   );
 }
+
+export default BookingDetail;

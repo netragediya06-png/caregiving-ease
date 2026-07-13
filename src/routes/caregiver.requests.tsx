@@ -64,3 +64,5 @@ function Requests() {
     </div>
   );
 }
+
+export default Requests;

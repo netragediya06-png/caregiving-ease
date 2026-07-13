@@ -66,3 +66,5 @@ function CaregiverHome() {
     </div>
   );
 }
+
+export default CaregiverHome;

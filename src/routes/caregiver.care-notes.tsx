@@ -44,3 +44,5 @@ function CareNotes() {
     </div>
   );
 }
+
+export default CareNotes;

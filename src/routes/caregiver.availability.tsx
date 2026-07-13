@@ -65,3 +65,5 @@ function Availability() {
     </div>
   );
 }
+
+export default Availability;

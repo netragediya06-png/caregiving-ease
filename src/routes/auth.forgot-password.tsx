@@ -18,3 +18,5 @@ function Forgot() {
     </AuthShell>
   );
 }
+
+export default Forgot;

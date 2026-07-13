@@ -354,3 +354,5 @@ function UploadTile({
     </label>
   );
 }
+
+export default CaregiverRegister;

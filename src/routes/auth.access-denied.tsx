@@ -15,3 +15,5 @@ function Denied() {
     />
   );
 }
+
+export default Denied;

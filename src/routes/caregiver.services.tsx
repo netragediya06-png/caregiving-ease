@@ -38,3 +38,5 @@ function CgServices() {
     </div>
   );
 }
+
+export default CgServices;

@@ -50,3 +50,5 @@ function Pending() {
     </StatusScreen>
   );
 }
+
+export default Pending;

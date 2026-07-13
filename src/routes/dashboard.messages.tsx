@@ -14,3 +14,5 @@ function MessagesLayout() {
     </div>
   );
 }
+
+export default MessagesLayout;

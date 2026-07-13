@@ -64,3 +64,5 @@ function BookingCard({ b, past }: { b: typeof bookings[number]; past?: boolean }
     </div>
   );
 }
+
+export default Bookings;

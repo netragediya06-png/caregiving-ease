@@ -40,3 +40,5 @@ function AssignedPatients() {
     </div>
   );
 }
+
+export default AssignedPatients;

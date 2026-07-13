@@ -50,3 +50,5 @@ function Profile() {
 function Row({ k, v }: { k: string; v: string }) {
   return <div className="flex items-center justify-between rounded-lg bg-muted/60 px-3 py-2 text-sm"><span className="text-muted-foreground">{k}</span><span className="font-medium">{v}</span></div>;
 }
+
+export default Profile;

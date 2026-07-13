@@ -286,3 +286,5 @@ function SectionHeader({ eyebrow, title, desc, align = "center", className = "" 
     </div>
   );
 }
+
+export default Landing;

@@ -10,3 +10,5 @@ function MessagesEmpty() {
     </div>
   );
 }
+
+export default MessagesEmpty;

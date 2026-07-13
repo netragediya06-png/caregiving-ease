@@ -53,3 +53,5 @@ function DashboardSupport() {
     </div>
   );
 }
+
+export default DashboardSupport;

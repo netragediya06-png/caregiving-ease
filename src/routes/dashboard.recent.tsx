@@ -34,3 +34,5 @@ function Recent() {
     </div>
   );
 }
+
+export default Recent;

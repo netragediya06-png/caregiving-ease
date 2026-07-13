@@ -42,3 +42,5 @@ function Inquiries() {
     </div>
   );
 }
+
+export default Inquiries;

@@ -54,3 +54,5 @@ function CgProfile() {
     </div>
   );
 }
+
+export default CgProfile;

@@ -73,3 +73,5 @@ function EmptyState() {
     </div>
   );
 }
+
+export default Patients;

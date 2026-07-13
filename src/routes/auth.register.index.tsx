@@ -49,3 +49,5 @@ function RegisterChoice() {
     </AuthShell>
   );
 }
+
+export default RegisterChoice;

@@ -52,3 +52,5 @@ function Earnings() {
     </div>
   );
 }
+
+export default Earnings;

@@ -6,3 +6,5 @@ function CgThread() {
   const { cv, messages } = Route.useLoaderData();
   return <ChatWindow conversation={cv} messages={messages} />;
 }
+
+export default CgThread;

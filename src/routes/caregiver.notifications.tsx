@@ -33,3 +33,5 @@ function CgNotifications() {
     </div>
   );
 }
+
+export default CgNotifications;

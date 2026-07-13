@@ -10,3 +10,5 @@ function CgMessagesEmpty() {
     </div>
   );
 }
+
+export default CgMessagesEmpty;

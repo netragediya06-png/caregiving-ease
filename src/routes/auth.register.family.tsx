@@ -72,3 +72,5 @@ function FamilyRegister() {
     </AuthShell>
   );
 }
+
+export default FamilyRegister;
