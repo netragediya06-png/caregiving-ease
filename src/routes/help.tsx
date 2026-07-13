@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { SiteNavbar } from "@/components/site/SiteNavbar";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { Badge } from "@/components/ui/badge";
@@ -10,15 +10,6 @@ import {
   Search, LifeBuoy, MessageSquare, PhoneCall,
 } from "lucide-react";
 
-export const Route = createFileRoute("/help")({
-  head: () => ({
-    meta: [
-      { title: "Help Center — SilverCare" },
-      { name: "description", content: "Guides, FAQs, and support articles for families and caregivers on SilverCare." },
-    ],
-  }),
-  component: HelpCenter,
-});
 
 const iconMap: Record<string, any> = { Sparkles, CalendarCheck, ShieldCheck, Wallet, ClipboardList, Lock };
 
@@ -81,3 +72,5 @@ function HelpCenter() {
     </div>
   );
 }
+
+export default HelpCenter;

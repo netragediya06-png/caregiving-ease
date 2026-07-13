@@ -1,8 +1,7 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { AuthShell } from "@/components/auth/AuthShell";
 import { Users, HeartHandshake, ArrowRight } from "lucide-react";
 
-export const Route = createFileRoute("/auth/register/")({ component: RegisterChoice });
 
 function RegisterChoice() {
   return (
@@ -50,3 +49,5 @@ function RegisterChoice() {
     </AuthShell>
   );
 }
+
+export default RegisterChoice;

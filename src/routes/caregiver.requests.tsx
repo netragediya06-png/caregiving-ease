@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/dashboard/DashboardLayout";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -6,7 +5,6 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { CheckCircle2, X, MapPin, Clock } from "lucide-react";
 
-export const Route = createFileRoute("/caregiver/requests")({ component: Requests });
 
 const requests = [
   { id: "RQ-2098", family: "Sharma family", initials: "SF", patient: "Mr. R. Sharma (74)", service: "Physiotherapy (5 visits)", when: "Mon · 9:00 AM", rate: 700, note: "Post knee replacement. Hindi speaking preferred.", status: "new" },
@@ -66,3 +64,5 @@ function Requests() {
     </div>
   );
 }
+
+export default Requests;

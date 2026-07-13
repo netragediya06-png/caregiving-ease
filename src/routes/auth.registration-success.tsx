@@ -1,16 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { useSearchParams } from "react-router-dom";
 import { CheckCircle2 } from "lucide-react";
 import { StatusScreen } from "@/components/auth/StatusScreen";
 
-export const Route = createFileRoute("/auth/registration-success")({
-  validateSearch: (s: Record<string, unknown>) => ({
-    role: (s.role as "family" | "caregiver") ?? "family",
-  }),
-  component: Success,
-});
-
-function Success() {
-  const { role } = Route.useSearch();
+export default function Success() {
+  const [params] = useSearchParams();
+  const role = params.get("role") === "caregiver" ? "caregiver" : "family";
   const isCaregiver = role === "caregiver";
   return (
     <StatusScreen

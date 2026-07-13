@@ -1,7 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
 import emptyInbox from "@/assets/empty-inbox.jpg";
 
-export const Route = createFileRoute("/dashboard/messages/")({ component: MessagesEmpty });
 
 function MessagesEmpty() {
   return (
@@ -12,3 +10,5 @@ function MessagesEmpty() {
     </div>
   );
 }
+
+export default MessagesEmpty;

@@ -1,21 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { SiteNavbar } from "@/components/site/SiteNavbar";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { Badge } from "@/components/ui/badge";
 import { stats } from "@/lib/mock-data";
 import { Heart, ShieldCheck, Sparkles } from "lucide-react";
 
-export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "About SilverCare" },
-      { name: "description", content: "SilverCare is on a mission to give India's seniors dignified, verified home healthcare." },
-      { property: "og:title", content: "About SilverCare" },
-      { property: "og:description", content: "Our mission is dignified, verified home healthcare for India's seniors." },
-    ],
-  }),
-  component: AboutPage,
-});
 
 function AboutPage() {
   return (
@@ -61,3 +49,5 @@ function AboutPage() {
     </div>
   );
 }
+
+export default AboutPage;

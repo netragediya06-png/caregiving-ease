@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { SiteNavbar } from "@/components/site/SiteNavbar";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { Badge } from "@/components/ui/badge";
@@ -6,15 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { faqs } from "@/lib/mock-data";
 
-export const Route = createFileRoute("/faq")({
-  head: () => ({
-    meta: [
-      { title: "FAQ — SilverCare" },
-      { name: "description", content: "Frequently asked questions about SilverCare's home healthcare services." },
-    ],
-  }),
-  component: FaqPage,
-});
 
 function FaqPage() {
   return (
@@ -45,3 +36,5 @@ function FaqPage() {
     </div>
   );
 }
+
+export default FaqPage;

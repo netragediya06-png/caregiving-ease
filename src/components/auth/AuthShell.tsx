@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { HeartPulse } from "lucide-react";
 import { ReactNode } from "react";
 import heroCare from "@/assets/hero-care.jpg";

@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/dashboard/DashboardLayout";
 import { bookings } from "@/lib/mock-data";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -7,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Calendar, MapPin } from "lucide-react";
 
-export const Route = createFileRoute("/dashboard/bookings")({ component: Bookings });
 
 const statusTone: Record<string, string> = {
   "Pending": "bg-warning/15 text-warning-foreground",
@@ -66,3 +64,5 @@ function BookingCard({ b, past }: { b: typeof bookings[number]; past?: boolean }
     </div>
   );
 }
+
+export default Bookings;

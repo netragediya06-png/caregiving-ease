@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { PageHeader } from "@/components/dashboard/DashboardLayout";
 import { caregivers, savedCaregiverIds } from "@/lib/mock-data";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Heart, MapPin, Star } from "lucide-react";
 import emptyInbox from "@/assets/empty-inbox.jpg";
 
-export const Route = createFileRoute("/dashboard/saved")({ component: Saved });
 
 function Saved() {
   const list = caregivers.filter(c => savedCaregiverIds.includes(c.id));
@@ -34,7 +33,7 @@ function Saved() {
               <div className="mt-4 flex items-center justify-between border-t border-border pt-4 text-sm">
                 <span className="flex items-center gap-1"><Star className="h-3.5 w-3.5 fill-warning text-warning" />{c.rating}</span>
                 <span>₹{c.hourlyRate}/hr</span>
-                <Button asChild size="sm" className="rounded-full"><Link to="/dashboard/caregivers/$id" params={{id:c.id}}>View</Link></Button>
+                <Button asChild size="sm" className="rounded-full"><Link to={`/dashboard/caregivers/${c.id}`}>View</Link></Button>
               </div>
             </div>
           ))}
@@ -54,3 +53,5 @@ function EmptyState() {
     </div>
   );
 }
+
+export default Saved;

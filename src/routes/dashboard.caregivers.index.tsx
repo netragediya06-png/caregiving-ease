@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { useMemo, useState } from "react";
 import { PageHeader } from "@/components/dashboard/DashboardLayout";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
@@ -9,7 +9,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Search, BadgeCheck, Star, MapPin, Filter } from "lucide-react";
 import { caregivers } from "@/lib/mock-data";
 
-export const Route = createFileRoute("/dashboard/caregivers/")({ component: Browse });
 
 function Browse() {
   const [q, setQ] = useState("");
@@ -89,7 +88,7 @@ function Browse() {
                 <p className="text-sm"><span className="font-semibold">₹{c.hourlyRate}</span><span className="text-muted-foreground">/hr</span></p>
                 <p className="text-[11px] text-muted-foreground">{c.availability}</p>
               </div>
-              <Button asChild size="sm" className="rounded-full"><Link to="/dashboard/caregivers/$id" params={{id:c.id}}>View profile</Link></Button>
+              <Button asChild size="sm" className="rounded-full"><Link to={`/dashboard/caregivers/${c.id}`}>View profile</Link></Button>
             </div>
           </div>
         ))}
@@ -103,3 +102,5 @@ function Browse() {
     </div>
   );
 }
+
+export default Browse;

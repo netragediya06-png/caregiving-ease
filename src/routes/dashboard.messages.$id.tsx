@@ -1,17 +1,11 @@
-import { createFileRoute, notFound } from "@tanstack/react-router";
+import { useParams, Navigate } from "react-router-dom";
 import { ChatWindow } from "@/components/communication/ChatWindow";
 import { chatThreads, conversations } from "@/lib/mock-data";
 
-export const Route = createFileRoute("/dashboard/messages/$id")({
-  loader: ({ params }) => {
-    const cv = conversations.find(c => c.id === params.id);
-    if (!cv) throw notFound();
-    return { cv, messages: chatThreads[cv.id] ?? [] };
-  },
-  component: MessagesThread,
-});
-
-function MessagesThread() {
-  const { cv, messages } = Route.useLoaderData();
+export default function MessagesThread() {
+  const { id } = useParams();
+  const cv = conversations.find((c) => c.id === id);
+  if (!cv) return <Navigate to="/dashboard/messages" replace />;
+  const messages = chatThreads[cv.id] ?? [];
   return <ChatWindow conversation={cv} messages={messages} />;
 }

@@ -1,6 +1,10 @@
-import { createFileRoute, Outlet } from "@tanstack/react-router";
+import { Outlet } from "react-router-dom";
 import { DashboardLayout } from "@/components/dashboard/DashboardLayout";
 
-export const Route = createFileRoute("/dashboard")({ component: () => (
-  <DashboardLayout role="user"><Outlet /></DashboardLayout>
-) });
+export default function DashboardRootLayout() {
+  return (
+    <DashboardLayout role="user">
+      <Outlet />
+    </DashboardLayout>
+  );
+}

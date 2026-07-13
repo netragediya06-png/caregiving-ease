@@ -1,8 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { CheckCircle2 } from "lucide-react";
 import { StatusScreen } from "@/components/auth/StatusScreen";
 
-export const Route = createFileRoute("/auth/verification-approved")({ component: Approved });
 
 function Approved() {
   return (
@@ -17,3 +15,5 @@ function Approved() {
     />
   );
 }
+
+export default Approved;

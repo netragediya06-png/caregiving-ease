@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, StatCard } from "@/components/dashboard/DashboardLayout";
 import { bookings } from "@/lib/mock-data";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -7,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Star, Wallet, History as HistoryIcon, CalendarCheck } from "lucide-react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
-export const Route = createFileRoute("/dashboard/history")({ component: HistoryPage });
 
 function HistoryPage() {
   const past = bookings.filter(b => ["Completed","Cancelled"].includes(b.status));
@@ -57,3 +55,5 @@ function HistoryPage() {
     </div>
   );
 }
+
+export default HistoryPage;

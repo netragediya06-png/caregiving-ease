@@ -1,11 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/dashboard/DashboardLayout";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import { Plus } from "lucide-react";
 
-export const Route = createFileRoute("/caregiver/services")({ component: CgServices });
 
 const myServices = [
   { title: "Registered Nursing", rate: 450, unit: "hr", active: true, desc: "Injections, wound care, vitals, medication management." },
@@ -40,3 +38,5 @@ function CgServices() {
     </div>
   );
 }
+
+export default CgServices;

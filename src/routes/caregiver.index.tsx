@@ -1,10 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, StatCard } from "@/components/dashboard/DashboardLayout";
 import { CalendarCheck, Star, Wallet, Clock, CheckCircle2, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
-export const Route = createFileRoute("/caregiver/")({ component: CaregiverHome });
 
 function CaregiverHome() {
   return (
@@ -68,3 +66,5 @@ function CaregiverHome() {
     </div>
   );
 }
+
+export default CaregiverHome;

@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/dashboard/DashboardLayout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -6,7 +5,6 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Separator } from "@/components/ui/separator";
 
-export const Route = createFileRoute("/caregiver/settings")({ component: CgSettings });
 
 function CgSettings() {
   return (
@@ -56,3 +54,5 @@ function CgSettings() {
     </div>
   );
 }
+
+export default CgSettings;

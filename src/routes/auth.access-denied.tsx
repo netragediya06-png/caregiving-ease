@@ -1,8 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { ShieldAlert } from "lucide-react";
 import { StatusScreen } from "@/components/auth/StatusScreen";
 
-export const Route = createFileRoute("/auth/access-denied")({ component: Denied });
 
 function Denied() {
   return (
@@ -17,3 +15,5 @@ function Denied() {
     />
   );
 }
+
+export default Denied;

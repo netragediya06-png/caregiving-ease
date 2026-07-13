@@ -1,8 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { Clock, Check, FileSearch, ShieldCheck } from "lucide-react";
 import { StatusScreen } from "@/components/auth/StatusScreen";
 
-export const Route = createFileRoute("/auth/pending-verification")({ component: Pending });
 
 const timeline = [
   { icon: Check, label: "Application received", done: true, meta: "Just now" },
@@ -52,3 +50,5 @@ function Pending() {
     </StatusScreen>
   );
 }
+
+export default Pending;

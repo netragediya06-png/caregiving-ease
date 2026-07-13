@@ -1,10 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/dashboard/DashboardLayout";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { UploadCloud, FileText, CheckCircle2, Clock } from "lucide-react";
 
-export const Route = createFileRoute("/caregiver/documents")({ component: Docs });
 
 const docs = [
   { name: "Government ID (Aadhaar)", status: "Verified", at: "Aug 14, 2025" },
@@ -48,3 +46,5 @@ function Docs() {
     </div>
   );
 }
+
+export default Docs;

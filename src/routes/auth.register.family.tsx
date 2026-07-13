@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { AuthShell } from "@/components/auth/AuthShell";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -6,7 +6,6 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Users } from "lucide-react";
 
-export const Route = createFileRoute("/auth/register/family")({ component: FamilyRegister });
 
 function FamilyRegister() {
   return (
@@ -59,7 +58,7 @@ function FamilyRegister() {
           <a className="text-primary hover:underline" href="#">Privacy Policy</a>.
         </label>
         <Button asChild className="w-full rounded-full" size="lg">
-          <Link to="/auth/registration-success" search={{ role: "family" }}>
+          <Link to="/auth/registration-success?role=family">
             Create family account
           </Link>
         </Button>
@@ -73,3 +72,5 @@ function FamilyRegister() {
     </AuthShell>
   );
 }
+
+export default FamilyRegister;

@@ -1,7 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
 import emptyInbox from "@/assets/empty-inbox.jpg";
 
-export const Route = createFileRoute("/caregiver/messages/")({ component: CgMessagesEmpty });
 
 function CgMessagesEmpty() {
   return (
@@ -12,3 +10,5 @@ function CgMessagesEmpty() {
     </div>
   );
 }
+
+export default CgMessagesEmpty;
