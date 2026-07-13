@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { PageHeader, StatCard } from "@/components/dashboard/DashboardLayout";
 import { CalendarCheck, HeartPulse, Users, Wallet, ArrowRight, Star, BadgeCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -6,7 +6,6 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { bookings, caregivers } from "@/lib/mock-data";
 
-export const Route = createFileRoute("/dashboard/")({ component: Overview });
 
 const statusTone: Record<string, string> = {
   "Pending": "bg-warning/15 text-warning-foreground",
@@ -60,7 +59,7 @@ function Overview() {
                   <p className="flex items-center gap-1 truncate text-sm font-medium">{c.name} {c.verified && <BadgeCheck className="h-3.5 w-3.5 text-success" />}</p>
                   <p className="flex items-center gap-1 text-xs text-muted-foreground"><Star className="h-3 w-3 fill-warning text-warning" />{c.rating} · {c.role}</p>
                 </div>
-                <Button asChild size="sm" variant="outline" className="rounded-full"><Link to="/dashboard/caregivers/$id" params={{id:c.id}}>View</Link></Button>
+                <Button asChild size="sm" variant="outline" className="rounded-full"><Link to={`/dashboard/caregivers/${c.id}`}>View</Link></Button>
               </div>
             ))}
           </div>

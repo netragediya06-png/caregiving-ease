@@ -1,10 +1,9 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { PageHeader } from "@/components/dashboard/DashboardLayout";
 import { Stethoscope, HeartHandshake, Activity, BedDouble, Brain, Flower2, ArrowRight } from "lucide-react";
 import { services } from "@/lib/mock-data";
 import { Button } from "@/components/ui/button";
 
-export const Route = createFileRoute("/dashboard/services")({ component: Services });
 
 const iconMap: Record<string, any> = { Stethoscope, HeartHandshake, Activity, BedDouble, Brain, Flower2 };
 

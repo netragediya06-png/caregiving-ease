@@ -1,9 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/dashboard/DashboardLayout";
 import { Bell, CalendarCheck, MessageSquare, Wallet } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export const Route = createFileRoute("/caregiver/notifications")({ component: CgNotifications });
 
 const items = [
   { icon: CalendarCheck, title: "New booking request from Mr. Sharma", time: "10 min ago", body: "Physio, 5 visits starting Mon 9 AM. Respond within 2 hours." },

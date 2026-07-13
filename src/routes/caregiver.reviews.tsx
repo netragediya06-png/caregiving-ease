@@ -1,9 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, StatCard } from "@/components/dashboard/DashboardLayout";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Star, ThumbsUp } from "lucide-react";
 
-export const Route = createFileRoute("/caregiver/reviews")({ component: Reviews });
 
 const reviews = [
   { name: "Anjali R.", rating: 5, date: "Nov 24, 2026", body: "Anita is thoughtful, punctual, and deeply skilled. Dad looks forward to her visits." },

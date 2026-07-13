@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { SiteNavbar } from "@/components/site/SiteNavbar";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { Badge } from "@/components/ui/badge";
@@ -8,17 +7,6 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, MapPin, PhoneCall } from "lucide-react";
 
-export const Route = createFileRoute("/contact")({
-  head: () => ({
-    meta: [
-      { title: "Contact SilverCare" },
-      { name: "description", content: "Get in touch with SilverCare's care team — we typically respond within a few hours." },
-      { property: "og:title", content: "Contact SilverCare" },
-      { property: "og:description", content: "Talk to our care team — we're here to help." },
-    ],
-  }),
-  component: ContactPage,
-});
 
 function ContactPage() {
   return (

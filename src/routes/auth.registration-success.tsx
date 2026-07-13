@@ -1,13 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { CheckCircle2 } from "lucide-react";
 import { StatusScreen } from "@/components/auth/StatusScreen";
 
-export const Route = createFileRoute("/auth/registration-success")({
-  validateSearch: (s: Record<string, unknown>) => ({
-    role: (s.role as "family" | "caregiver") ?? "family",
-  }),
-  component: Success,
-});
 
 function Success() {
   const { role } = Route.useSearch();

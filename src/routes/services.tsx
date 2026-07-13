@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { SiteNavbar } from "@/components/site/SiteNavbar";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { Button } from "@/components/ui/button";
@@ -6,17 +6,6 @@ import { Badge } from "@/components/ui/badge";
 import { services } from "@/lib/mock-data";
 import { Stethoscope, HeartHandshake, Activity, BedDouble, Brain, Flower2, ArrowRight, ShieldCheck } from "lucide-react";
 
-export const Route = createFileRoute("/services")({
-  head: () => ({
-    meta: [
-      { title: "Home healthcare services — SilverCare" },
-      { name: "description", content: "Explore SilverCare's home healthcare services: nursing, elderly attendants, physiotherapy, post-hospital and dementia care." },
-      { property: "og:title", content: "Home healthcare services — SilverCare" },
-      { property: "og:description", content: "Verified nurses, attendants, and therapists for home-based elderly care." },
-    ],
-  }),
-  component: ServicesPage,
-});
 
 const iconMap: Record<string, any> = { Stethoscope, HeartHandshake, Activity, BedDouble, Brain, Flower2 };
 

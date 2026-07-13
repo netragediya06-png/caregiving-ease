@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import {
   ShieldCheck, Stethoscope, HeartHandshake, Activity, BedDouble, Brain, Flower2,
   Search, CalendarCheck, BadgeCheck, Star, ArrowRight, Sparkles, Quote, Clock, Wallet, PhoneCall,
@@ -14,17 +14,6 @@ import { LocationSearch } from "@/components/site/LocationSearch";
 import heroCare from "@/assets/hero-care.jpg";
 import carePhysio from "@/assets/care-physio.jpg";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "SilverCare — Verified home healthcare for seniors" },
-      { name: "description", content: "Book verified nurses, attendants, physiotherapists, and post-hospital caregivers for your loved ones at home." },
-      { property: "og:title", content: "SilverCare — Verified home healthcare for seniors" },
-      { property: "og:description", content: "Book verified nurses, attendants, physiotherapists, and post-hospital caregivers for your loved ones at home." },
-    ],
-  }),
-  component: Landing,
-});
 
 const iconMap: Record<string, any> = { Stethoscope, HeartHandshake, Activity, BedDouble, Brain, Flower2 };
 
@@ -194,7 +183,7 @@ function Landing() {
               </div>
               <div className="mt-5 flex items-center justify-between border-t border-border pt-4">
                 <p className="text-sm"><span className="font-semibold">₹{c.hourlyRate}</span><span className="text-muted-foreground">/hr</span></p>
-                <Button asChild size="sm" className="rounded-full"><Link to="/dashboard/caregivers/$id" params={{id:c.id}}>View profile</Link></Button>
+                <Button asChild size="sm" className="rounded-full"><Link to={`/dashboard/caregivers/${c.id}`}>View profile</Link></Button>
               </div>
             </div>
           ))}

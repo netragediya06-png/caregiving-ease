@@ -1,9 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/dashboard/DashboardLayout";
 import { Bell, CalendarCheck, MessageSquare, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export const Route = createFileRoute("/dashboard/notifications")({ component: Notifications });
 
 const items = [
   { icon: CalendarCheck, title: "Booking BK-10241 is in progress", time: "2 min ago", body: "Anita Sharma has started the morning visit for Mr. Ramesh Gupta." },

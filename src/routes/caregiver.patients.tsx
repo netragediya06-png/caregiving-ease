@@ -1,10 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/dashboard/DashboardLayout";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
-export const Route = createFileRoute("/caregiver/patients")({ component: AssignedPatients });
 
 const patients = [
   { name: "Mr. Ramesh Gupta", relation: "Family: Anjali Rao", age: 78, conditions: ["Type 2 diabetes", "Mild arthritis"], visits: 24 },

@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Link, useRouterState } from "@tanstack/react-router";
+import { Link, useLocation } from "react-router-dom";
 import {
   HeartPulse, LayoutDashboard, User, Users, CalendarCheck, Stethoscope,
   History, Wallet, FileText, Settings, LogOut, Bell, Search,
@@ -56,7 +56,7 @@ const roleMeta: Record<Role, { name: string; sub: string; initials: string; badg
 };
 
 export function DashboardLayout({ role, children }: { role: Role; children: ReactNode }) {
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const pathname = useLocation().pathname;
   const items = navByRole[role];
   const me = roleMeta[role];
 

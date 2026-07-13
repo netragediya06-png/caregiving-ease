@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/dashboard/DashboardLayout";
 import { inquiries } from "@/lib/mock-data";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -6,7 +5,6 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Clock, MessageSquare } from "lucide-react";
 
-export const Route = createFileRoute("/caregiver/inquiries")({ component: Inquiries });
 
 const tone: Record<string, string> = {
   "New": "bg-primary-soft text-primary",

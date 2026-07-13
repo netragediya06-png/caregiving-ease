@@ -1,11 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, StatCard } from "@/components/dashboard/DashboardLayout";
 import { Wallet, TrendingUp, ArrowDownRight, Banknote } from "lucide-react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
-export const Route = createFileRoute("/caregiver/earnings")({ component: Earnings });
 
 const payouts = [
   { id: "PO-9921", date: "Nov 25, 2026", visits: 11, amount: 18400, status: "Paid" },

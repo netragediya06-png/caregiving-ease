@@ -1,8 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { XCircle } from "lucide-react";
 import { StatusScreen } from "@/components/auth/StatusScreen";
 
-export const Route = createFileRoute("/auth/verification-rejected")({ component: Rejected });
 
 function Rejected() {
   return (

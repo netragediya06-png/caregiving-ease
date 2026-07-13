@@ -1,4 +1,4 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { PageHeader } from "@/components/dashboard/DashboardLayout";
 import { caregivers, sampleReviews, type Caregiver } from "@/lib/mock-data";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -11,17 +11,6 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { InquiryDialog, CallbackDialog } from "@/components/communication/InquiryDialog";
 
-export const Route = createFileRoute("/dashboard/caregivers/$id")({
-  loader: ({ params }) => {
-    const c = caregivers.find((x) => x.id === params.id);
-    if (!c) throw notFound();
-    return c;
-  },
-  component: Detail,
-  notFoundComponent: () => (
-    <div className="p-10 text-center"><h2 className="font-display text-2xl">Caregiver not found</h2><Link to="/dashboard/caregivers" className="text-primary hover:underline">Back to search</Link></div>
-  ),
-});
 
 function Detail() {
   const c = Route.useLoaderData() as Caregiver;
@@ -143,7 +132,7 @@ function Detail() {
             <h3 className="font-display text-lg font-semibold">Similar caregivers</h3>
             <div className="grid gap-4 md:grid-cols-3">
               {similar.map((s) => (
-                <Link key={s.id} to="/dashboard/caregivers/$id" params={{id:s.id}} className="surface-card group p-4 transition hover:-translate-y-0.5 hover:shadow-card">
+                <Link key={s.id} to={`/dashboard/caregivers/${s.id}`} className="surface-card group p-4 transition hover:-translate-y-0.5 hover:shadow-card">
                   <div className="flex items-center gap-3">
                     <Avatar className="h-11 w-11">
                       {s.photo && <AvatarImage src={s.photo} alt={s.name} />}

@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/dashboard/DashboardLayout";
 import { callbacks } from "@/lib/mock-data";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -6,7 +5,6 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { PhoneCall, Clock } from "lucide-react";
 
-export const Route = createFileRoute("/caregiver/callbacks")({ component: Callbacks });
 
 const tone: Record<string, string> = {
   "Pending": "bg-warning/15 text-warning-foreground",

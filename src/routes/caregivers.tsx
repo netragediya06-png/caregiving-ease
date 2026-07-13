@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { SiteNavbar } from "@/components/site/SiteNavbar";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -8,17 +8,6 @@ import { Input } from "@/components/ui/input";
 import { caregivers } from "@/lib/mock-data";
 import { BadgeCheck, MapPin, Search, Star } from "lucide-react";
 
-export const Route = createFileRoute("/caregivers")({
-  head: () => ({
-    meta: [
-      { title: "Browse verified caregivers — SilverCare" },
-      { name: "description", content: "Meet SilverCare's verified nurses, attendants, and physiotherapists for elderly home healthcare." },
-      { property: "og:title", content: "Browse verified caregivers — SilverCare" },
-      { property: "og:description", content: "Meet SilverCare's verified home healthcare professionals." },
-    ],
-  }),
-  component: CaregiversPublic,
-});
 
 function CaregiversPublic() {
   return (

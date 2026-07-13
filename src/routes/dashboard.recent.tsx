@@ -1,11 +1,10 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { PageHeader } from "@/components/dashboard/DashboardLayout";
 import { caregivers, recentlyViewedIds } from "@/lib/mock-data";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Clock3, MapPin, Star } from "lucide-react";
 
-export const Route = createFileRoute("/dashboard/recent")({ component: Recent });
 
 function Recent() {
   const list = recentlyViewedIds
@@ -28,7 +27,7 @@ function Recent() {
             <span className="hidden items-center gap-1 text-sm sm:flex"><Star className="h-3.5 w-3.5 fill-warning text-warning" />{c.rating}</span>
             <span className="hidden text-sm text-muted-foreground sm:inline">₹{c.hourlyRate}/hr</span>
             <span className="hidden items-center gap-1 text-xs text-muted-foreground md:flex"><Clock3 className="h-3 w-3" />{i === 0 ? "Just now" : `${i * 2}h ago`}</span>
-            <Button asChild size="sm" className="rounded-full"><Link to="/dashboard/caregivers/$id" params={{id:c.id}}>View profile</Link></Button>
+            <Button asChild size="sm" className="rounded-full"><Link to={`/dashboard/caregivers/${c.id}`}>View profile</Link></Button>
           </div>
         ))}
       </div>

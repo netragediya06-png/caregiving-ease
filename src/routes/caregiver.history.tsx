@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, StatCard } from "@/components/dashboard/DashboardLayout";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -6,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Clock, CheckCircle2, Star } from "lucide-react";
 
-export const Route = createFileRoute("/caregiver/history")({ component: WorkHistory });
 
 const visits = [
   { id: "VS-3211", patient: "Mr. Ramesh Gupta", service: "Diabetes care", date: "Nov 24, 2026", hrs: 4, total: 1800, rating: 5 },

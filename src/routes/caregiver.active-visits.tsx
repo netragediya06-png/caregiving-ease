@@ -1,11 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, StatCard } from "@/components/dashboard/DashboardLayout";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Clock, PlayCircle, MapPin, PhoneCall } from "lucide-react";
 
-export const Route = createFileRoute("/caregiver/active-visits")({ component: ActiveVisits });
 
 const visits = [
   { patient: "Mr. Ramesh Gupta", service: "Diabetes care", start: "9:00 AM", eta: "1:00 PM", address: "Indira Nagar, Bengaluru", status: "In progress" },

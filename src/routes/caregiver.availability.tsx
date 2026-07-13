@@ -1,12 +1,10 @@
 import { Fragment } from "react";
-import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/dashboard/DashboardLayout";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 
-export const Route = createFileRoute("/caregiver/availability")({ component: Availability });
 
 const days = ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
 const slots = ["6:00","7:00","8:00","9:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00"];

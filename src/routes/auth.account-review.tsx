@@ -1,8 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { FileSearch } from "lucide-react";
 import { StatusScreen } from "@/components/auth/StatusScreen";
 
-export const Route = createFileRoute("/auth/account-review")({ component: Review });
 
 function Review() {
   return (

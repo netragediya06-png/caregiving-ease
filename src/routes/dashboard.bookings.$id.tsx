@@ -1,4 +1,4 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { PageHeader } from "@/components/dashboard/DashboardLayout";
 import { bookings, patients } from "@/lib/mock-data";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -10,17 +10,6 @@ import {
   User, ClipboardList, XCircle, CheckCircle2,
 } from "lucide-react";
 
-export const Route = createFileRoute("/dashboard/bookings/$id")({
-  loader: ({ params }) => {
-    const b = bookings.find((x) => x.id === params.id);
-    if (!b) throw notFound();
-    return b;
-  },
-  component: BookingDetail,
-  notFoundComponent: () => (
-    <div className="p-10 text-center"><h2 className="font-display text-2xl">Booking not found</h2><Link to="/dashboard/bookings" className="text-primary hover:underline">Back to bookings</Link></div>
-  ),
-});
 
 const timeline = [
   { at: "3 days ago", title: "Booking requested", body: "You requested this booking.", done: true },
@@ -69,7 +58,7 @@ function BookingDetail() {
                 <p className="text-xs text-muted-foreground">Verified professional</p>
               </div>
               <Button asChild size="sm" variant="outline" className="rounded-full">
-                <Link to="/dashboard/caregivers/$id" params={{id: b.caregiverId}}>View profile</Link>
+                <Link to={`/dashboard/caregivers/${b.caregiverId}`}>View profile</Link>
               </Button>
             </div>
           </div>
@@ -80,7 +69,7 @@ function BookingDetail() {
             <p className="mb-3 text-sm text-muted-foreground">Your booking is confirmed — you can now reach {b.caregiver} directly.</p>
             <div className="grid gap-3 sm:grid-cols-3">
               <Button asChild variant="outline" className="rounded-full">
-                <Link to="/dashboard/messages/$id" params={{id: "cv-1"}}><MessageSquare className="mr-1.5 h-4 w-4" />Message</Link>
+                <Link to={`/dashboard/messages/${"cv-1"}`}><MessageSquare className="mr-1.5 h-4 w-4" />Message</Link>
               </Button>
               <Button variant="outline" className="rounded-full"><PhoneCall className="mr-1.5 h-4 w-4" />Call caregiver</Button>
               <Button variant="outline" className="rounded-full"><Mail className="mr-1.5 h-4 w-4" />Email caregiver</Button>

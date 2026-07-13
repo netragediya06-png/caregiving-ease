@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Menu, X, HeartPulse } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -30,7 +30,6 @@ export function SiteNavbar() {
               key={l.to}
               to={l.to}
               className="text-sm text-muted-foreground transition hover:text-foreground"
-              activeProps={{ className: "text-foreground font-medium" }}
             >
               {l.label}
             </Link>

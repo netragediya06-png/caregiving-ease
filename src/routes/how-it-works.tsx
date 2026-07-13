@@ -1,21 +1,10 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { SiteNavbar } from "@/components/site/SiteNavbar";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Search, CalendarCheck, HeartHandshake, ShieldCheck, MessageSquare, Star } from "lucide-react";
 
-export const Route = createFileRoute("/how-it-works")({
-  head: () => ({
-    meta: [
-      { title: "How SilverCare works" },
-      { name: "description", content: "From booking a caregiver to daily care and reviews — see how SilverCare works for families and caregivers." },
-      { property: "og:title", content: "How SilverCare works" },
-      { property: "og:description", content: "Book verified caregivers, track visits, and manage care from one dashboard." },
-    ],
-  }),
-  component: HowItWorks,
-});
 
 const familySteps = [
   { icon: Search, title: "Tell us who needs care", body: "Create a family account and add a profile for your loved one — conditions, preferences, schedule." },

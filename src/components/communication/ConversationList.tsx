@@ -1,11 +1,11 @@
-import { Link, useRouterState } from "@tanstack/react-router";
+import { Link, useLocation } from "react-router-dom";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { conversations } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
 
 export function ConversationList({ basePath }: { basePath: "/dashboard/messages" | "/caregiver/messages" }) {
-  const pathname = useRouterState({ select: s => s.location.pathname });
+  const pathname = useLocation().pathname;
   return (
     <div className="surface-card h-[calc(100vh-11rem)] min-h-[520px] overflow-y-auto p-0">
       <div className="border-b border-border px-5 py-4">

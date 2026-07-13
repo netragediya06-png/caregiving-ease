@@ -1,11 +1,9 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/dashboard/DashboardLayout";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { FileText, Plus } from "lucide-react";
 
-export const Route = createFileRoute("/caregiver/care-notes")({ component: CareNotes });
 
 const notes = [
   { patient: "Mr. Ramesh Gupta", date: "Nov 24, 2026 · 12:40 PM", tag: "Diabetes care", body: "Fasting glucose 118 mg/dL. Administered morning insulin. Encouraged short walk after lunch." },

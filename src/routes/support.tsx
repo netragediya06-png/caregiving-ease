@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { SiteNavbar } from "@/components/site/SiteNavbar";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { Badge } from "@/components/ui/badge";
@@ -9,15 +8,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Mail, PhoneCall, MessageCircle, MapPin, Clock, AlertTriangle } from "lucide-react";
 
-export const Route = createFileRoute("/support")({
-  head: () => ({
-    meta: [
-      { title: "Support — SilverCare" },
-      { name: "description", content: "Submit a support request or reach the SilverCare care team." },
-    ],
-  }),
-  component: SupportPage,
-});
 
 function SupportPage() {
   return (
