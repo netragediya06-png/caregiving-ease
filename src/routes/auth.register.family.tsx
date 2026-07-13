@@ -58,7 +58,7 @@ function FamilyRegister() {
           <a className="text-primary hover:underline" href="#">Privacy Policy</a>.
         </label>
         <Button asChild className="w-full rounded-full" size="lg">
-          <Link to="/auth/registration-success" search={{ role: "family" }}>
+          <Link to="/auth/registration-success?role=family">
             Create family account
           </Link>
         </Button>

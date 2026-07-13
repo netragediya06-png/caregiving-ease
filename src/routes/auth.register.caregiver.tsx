@@ -83,7 +83,7 @@ function CaregiverRegister() {
         onSubmit={(e) => {
           e.preventDefault();
           if (step < 4) next();
-          else navigate({ to: "/auth/pending-verification" });
+          else navigate("/auth/pending-verification");
         }}
       >
         {step === 1 && <StepBasic />}
