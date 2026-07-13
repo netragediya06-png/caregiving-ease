@@ -1,9 +1,10 @@
+import { useSearchParams } from "react-router-dom";
 import { CheckCircle2 } from "lucide-react";
 import { StatusScreen } from "@/components/auth/StatusScreen";
 
-
-function Success() {
-  const { role } = Route.useSearch();
+export default function Success() {
+  const [params] = useSearchParams();
+  const role = params.get("role") === "caregiver" ? "caregiver" : "family";
   const isCaregiver = role === "caregiver";
   return (
     <StatusScreen
@@ -25,5 +26,3 @@ function Success() {
     />
   );
 }
-
-export default Success;
