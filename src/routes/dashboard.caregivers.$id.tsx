@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { PageHeader } from "@/components/dashboard/DashboardLayout";
 import { caregivers, sampleReviews, type Caregiver } from "@/lib/mock-data";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -13,7 +13,16 @@ import { InquiryDialog, CallbackDialog } from "@/components/communication/Inquir
 
 
 function Detail() {
-  const c = Route.useLoaderData() as Caregiver;
+  const { id } = useParams();
+  const c = caregivers.find((x) => x.id === id) as Caregiver | undefined;
+  if (!c) {
+    return (
+      <div className="p-10 text-center">
+        <h2 className="font-display text-2xl">Caregiver not found</h2>
+        <Link to="/dashboard/caregivers" className="text-primary hover:underline">Back to search</Link>
+      </div>
+    );
+  }
   const similar = caregivers.filter((x) => x.id !== c.id && (x.role === c.role || x.city === c.city)).slice(0, 3);
 
   return (

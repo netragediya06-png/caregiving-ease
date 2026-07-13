@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { PageHeader } from "@/components/dashboard/DashboardLayout";
 import { bookings, patients } from "@/lib/mock-data";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -20,7 +20,16 @@ const timeline = [
 ];
 
 function BookingDetail() {
-  const b = Route.useLoaderData();
+  const { id } = useParams();
+  const b = bookings.find((x) => x.id === id);
+  if (!b) {
+    return (
+      <div className="p-10 text-center">
+        <h2 className="font-display text-2xl">Booking not found</h2>
+        <Link to="/dashboard/bookings" className="text-primary hover:underline">Back to bookings</Link>
+      </div>
+    );
+  }
   const patient = patients.find(p => p.name === b.patient) ?? { name: b.patient, age: 78, conditions: [] as string[], notes: "", relation: "Family member" };
   const isCompleted = b.status === "Completed";
 
